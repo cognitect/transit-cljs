@@ -25,6 +25,13 @@
                 :output-dir "target/out-test"
                 :optimizations :none
                 :source-map true}}
+             {:id "roundtrip"
+              :source-paths ["src" "test/transit/roundtrip"] 
+              :compiler {
+                :output-to "target/roundtrip.js"
+                :output-dir "target/out-roundtrip"
+                :optimizations :simple
+                :static-fns true}}
              {:id "bench"
               :source-paths ["src" "bench"] 
               :compiler {
