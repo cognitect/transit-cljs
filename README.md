@@ -2,11 +2,23 @@
 
 ## Dependencies
 
-## Running the tests
+Install dependencies with
 
-## Build
+```
+lein deps
+```
 
-### Version
+## Running the tests & benchmarks
+
+```
+lein cljsbuild once test
+open index.html
+```
+
+```
+lein cljsbuild once bench
+node target/transit.bench.js
+```
 
 ## License
 
