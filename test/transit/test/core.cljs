@@ -1,4 +1,4 @@
-(ns transit.test
+(ns transit.test.core
   (:require [transit.core :as t]))
 
 (enable-console-print!)

@@ -19,7 +19,7 @@
                 :optimizations :none
                 :source-map true}}
              {:id "test"
-              :source-paths ["src" "test"] 
+              :source-paths ["src" "test/transit/test"] 
               :compiler {
                 :output-to "target/transit.test.js"
                 :output-dir "target/out-test"
