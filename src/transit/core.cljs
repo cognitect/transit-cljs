@@ -83,7 +83,7 @@
      (t/writer (name type)
        (opts-merge
          #js {:mapIterator
-              (fn [m] (println "map iterator!") (MapIterator. (seq m)))
+              (fn [m] (MapIterator. (seq m)))
               :handlers
               #js [cljs.core/Keyword               (keyword-handler)
                    cljs.core/Symbol                (symbol-handler)
