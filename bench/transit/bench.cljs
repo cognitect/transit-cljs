@@ -1,5 +1,6 @@
 (ns transit.test
-  (:require [transit.core :as t]))
+  (:require [transit.core :as t]
+            [cljs.reader :as r]))
 
 (enable-console-print!)
 
@@ -12,3 +13,9 @@
 (time
   (dotimes [_ 100]
     (. r (read json))))
+
+(println "100 iters, cljs.reader/read-string seattle file")
+(def edn (pr-str (. r (read json))))
+(time
+  (dotimes [_ 100]
+    (r/read-string edn)))
