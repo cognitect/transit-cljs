@@ -74,12 +74,12 @@
                 ret))
        :stringRep (fn [v] nil)})
 
-(deftype MapIterator [^{:mutable true :tag not-native} seq]
+(deftype MapIterator [^:mutable seq]
   Object
   (hasNext [_] (not (nil? seq)))
   (next [_]
-    (let [me (-first seq)]
-      (set! seq (-next seq))
+    (let [me (first seq)]
+      (set! seq (next seq))
       (.-tail me))))
 
 (defn writer
