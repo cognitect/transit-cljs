@@ -14,6 +14,18 @@
         (aset a k (.concat (aget a k) (aget b k))))))
   a)
 
+(deftype MapBuilder []
+  Object
+  (init [_] (transient {}))
+  (add [_ m k v] (assoc! m k v))
+  (finalize [_ m] (persistent! m)))
+
+(deftype VectorBuilder []
+  Object
+  (init [_] (transient []))
+  (add [_ v x] (conj! v x))
+  (finalize [_ v] (persistent! v)))
+
 (defn reader
   ([type] (reader type nil))
   ([type opts]
@@ -24,14 +36,8 @@
                    ":" (fn [v] (keyword v))
                    "set" (fn [v] (into #{} v))
                    "list" (fn [v] (into () (.reverse v)))}
-              :defaultMapBuilder
-              #js {:init (fn [] (transient {}))
-                   :add (fn [m k v] (assoc! m k v))
-                   :finalize (fn [m] (persistent! m))}
-              :defaultArrayBuilder
-              #js {:init (fn [] (transient []))
-                   :add (fn [v x] (conj! v x))
-                   :finalize (fn [v] (persistent! v))}
+              :defaultMapBuilder (MapBuilder.)
+              :defaultArrayBuilder (VectorBuilder.)
               :prefersStrings false}
          (clj->js opts)))))
 

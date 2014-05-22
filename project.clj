@@ -4,7 +4,7 @@
 
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [org.clojure/clojurescript "0.0-2227"]
-                 [com.cognitect/transit-js "0.1.273"]]
+                 [com.cognitect/transit-js "0.1.275"]]
 
   :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]]
 
@@ -23,8 +23,7 @@
               :compiler {
                 :output-to "target/transit.test.js"
                 :output-dir "target/out-test"
-                :optimizations :none
-                :source-map true}}
+                :optimizations :advanced}}
              {:id "roundtrip"
               :source-paths ["src" "test/transit/roundtrip"] 
               :compiler {
