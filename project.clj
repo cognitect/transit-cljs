@@ -25,6 +25,13 @@
                 :output-dir "target/out-test"
                 :optimizations :none
                 :source-map true}}
+             {:id "bench"
+              :source-paths ["src" "bench"] 
+              :compiler {
+                :output-to "target/transit.bench.js"
+                :output-dir "target/out-bench"
+                :optimizations :simple
+                :static-fns true}}
              {:id "adv"
               :source-paths ["src"]
               :compiler {
