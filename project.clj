@@ -3,8 +3,8 @@
   :url "http://example.com/FIXME"
 
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojure/clojurescript "0.0-2226"]
-                 [com.cognitect/transit-js "0.1.262"]]
+                 [org.clojure/clojurescript "0.0-2227"]
+                 [com.cognitect/transit-js "0.1.267"]]
 
   :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]]
 
