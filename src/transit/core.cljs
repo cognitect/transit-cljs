@@ -35,44 +35,50 @@
               :prefersStrings false}
          (clj->js opts)))))
 
-(defn keyword-handler []
-  #js {:tag (fn [v] ":")
-       :rep (fn [v] (.-fqn v))
-       :stringRep (fn [v] (.-fqn v))})
+(deftype KeywordHandler []
+  Object
+  (tag [_ v] ":")
+  (rep [_ v] (.-fqn v))
+  (stringRep [_ v] (.-fqn v)))
 
-(defn symbol-handler []
-  #js {:tag (fn [v] "$")
-       :rep (fn [v] (.-str v))
-       :stringRep (fn [v] (.-str v))})
+(deftype SymbolHandler []
+  Object
+  (tag [_ v] "$")
+  (rep [_ v] (.-str v))
+  (stringRep [_ v] (.-str v)))
 
-(defn list-handler []
-  #js {:tag (fn [v] "list")
-       :rep (fn [v]
-              (let [ret #js []]
-                (doseq [x v] (.push ret x))
-                (t/tagged "array" ret)))
-       :stringRep (fn [v] nil)})
+(deftype ListHandler []
+  Object
+  (tag [_ v] "list")
+  (rep [_ v]
+    (let [ret #js []]
+      (doseq [x v] (.push ret x))
+      (t/tagged "array" ret)))
+  (stringRep [_ v] nil))
 
-(defn map-handler []
-  #js {:tag (fn [v] "map")
-       :rep (fn [v] v)
-       :stringRep (fn [v] nil)})
+(deftype MapHandler []
+  Object
+  (tag [_ v] "map")
+  (rep [_ v] v)
+  (stringRep [_ v] nil))
 
-(defn set-handler []
-  #js {:tag (fn [v] "set")
-       :rep (fn [v]
-              (let [ret #js []]
-                (doseq [x v] (.push ret x))
-                (t/tagged "array" ret)))
-       :stringRep (fn [v] nil)})
+(deftype SetHandler []
+  Object
+  (tag [_ v] "set")
+  (rep [_ v]
+    (let [ret #js []]
+      (doseq [x v] (.push ret x))
+      (t/tagged "array" ret)))
+  (stringRep [v] nil))
 
-(defn vector-handler []
-  #js {:tag (fn [v] "array")
-       :rep (fn [v]
-              (let [ret #js []]
-                (doseq [x v] (.push ret x))
-                ret))
-       :stringRep (fn [v] nil)})
+(deftype VectorHandler []
+  Object
+  (tag [_ v] "array")
+  (rep [_ v]
+    (let [ret #js []]
+      (doseq [x v] (.push ret x))
+      ret))
+  (stringRep [_ v] nil))
 
 (deftype MapIterator [^:mutable seq]
   Object
@@ -85,36 +91,42 @@
 (defn writer
   ([type] (writer type nil))
   ([type opts]
-     (t/writer (name type)
-       (opts-merge
-         #js {:mapIterator
-              (fn [m] (MapIterator. (seq m)))
-              :handlers
-              #js [cljs.core/Keyword               (keyword-handler)
-                   cljs.core/Symbol                (symbol-handler)
-                   cljs.core/Range                 (list-handler)
-                   cljs.core/List                  (list-handler)
-                   cljs.core/Cons                  (list-handler)
-                   cljs.core/EmptyList             (list-handler)
-                   cljs.core/LazySeq               (list-handler)
-                   cljs.core/RSeq                  (list-handler)
-                   cljs.core/IndexedSeq            (list-handler)
-                   cljs.core/ChunkedCons           (list-handler)
-                   cljs.core/ChunkedSeq            (list-handler)
-                   cljs.core/PersistentQueueSeq    (list-handler)
-                   cljs.core/PersistentQueue       (list-handler)
-                   cljs.core/PersistentArrayMapSeq (list-handler)
-                   cljs.core/PersistentTreeMapSeq  (list-handler)
-                   cljs.core/NodeSeq               (list-handler)
-                   cljs.core/ArrayNodeSeq          (list-handler)
-                   cljs.core/KeySeq                (list-handler)
-                   cljs.core/ValSeq                (list-handler)
-                   cljs.core/PersistentArrayMap    (map-handler)
-                   cljs.core/PersistentHashMap     (map-handler)
-                   cljs.core/PersistentTreeMap     (map-handler)
-                   cljs.core/PersistentHashSet     (set-handler)
-                   cljs.core/PersistentTreeSet     (set-handler)
-                   cljs.core/PersistentVector      (vector-handler)
-                   cljs.core/Subvec                (vector-handler)]}
-         (clj->js opts)))))
+     (let [keyword-handler (KeywordHandler.)
+           symbol-handler  (SymbolHandler.)
+           list-handler    (ListHandler.)
+           map-handler     (MapHandler.)
+           set-handler     (SetHandler.)
+           vector-handler  (VectorHandler.)]
+      (t/writer (name type)
+        (opts-merge
+          #js {:mapIterator
+               (fn [m] (MapIterator. (seq m)))
+               :handlers
+               #js [cljs.core/Keyword               keyword-handler
+                    cljs.core/Symbol                symbol-handler
+                    cljs.core/Range                 list-handler
+                    cljs.core/List                  list-handler
+                    cljs.core/Cons                  list-handler
+                    cljs.core/EmptyList             list-handler
+                    cljs.core/LazySeq               list-handler
+                    cljs.core/RSeq                  list-handler
+                    cljs.core/IndexedSeq            list-handler
+                    cljs.core/ChunkedCons           list-handler
+                    cljs.core/ChunkedSeq            list-handler
+                    cljs.core/PersistentQueueSeq    list-handler
+                    cljs.core/PersistentQueue       list-handler
+                    cljs.core/PersistentArrayMapSeq list-handler
+                    cljs.core/PersistentTreeMapSeq  list-handler
+                    cljs.core/NodeSeq               list-handler
+                    cljs.core/ArrayNodeSeq          list-handler
+                    cljs.core/KeySeq                list-handler
+                    cljs.core/ValSeq                list-handler
+                    cljs.core/PersistentArrayMap    map-handler
+                    cljs.core/PersistentHashMap     map-handler
+                    cljs.core/PersistentTreeMap     map-handler
+                    cljs.core/PersistentHashSet     set-handler
+                    cljs.core/PersistentTreeSet     set-handler
+                    cljs.core/PersistentVector      vector-handler
+                    cljs.core/Subvec                vector-handler]}
+          (clj->js opts))))))
 
