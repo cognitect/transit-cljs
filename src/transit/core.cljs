@@ -42,8 +42,8 @@
 
 (defn symbol-handler []
   #js {:tag (fn [v] "$")
-       :rep (fn [v] (.-fqn v))
-       :stringRep (fn [v] (.-fqn v))})
+       :rep (fn [v] (.-str v))
+       :stringRep (fn [v] (.-str v))})
 
 (defn list-handler []
   #js {:tag (fn [v] "list")
