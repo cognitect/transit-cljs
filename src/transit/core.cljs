@@ -28,25 +28,30 @@
               #js {:init (fn [] (transient {}))
                    :add (fn [m k v] (assoc! m k v))
                    :finalize (fn [m] (persistent! m))}
+              :defaultArrayBuilder
+              #js {:init (fn [] (transient []))
+                   :add (fn [v x] (conj! v x))
+                   :finalize (fn [v] (persistent! v))}
               :prefersStrings false}
          (clj->js opts)))))
 
 (defn keyword-handler []
   #js {:tag (fn [v] ":")
-       :rep (fn [v] (.substring (str v) 1))
-       :stringRep (fn [v] (.substring (str v) 1))})
+       :rep (fn [v] (.-fqn v))
+       :stringRep (fn [v] (.-fqn v))})
 
 (defn symbol-handler []
   #js {:tag (fn [v] "$")
-       :rep (fn [v] (.substring (str v) 1))
-       :stringRep (fn [v] (.substring (str v) 1))})
+       :rep (fn [v] (.-fqn v))
+       :stringRep (fn [v] (.-fqn v))})
 
 (defn list-handler []
   #js {:tag (fn [v] "list")
        :rep (fn [v]
               (let [ret #js []]
                 (doseq [x v] (.push ret x))
-                (t/tagged "array" ret)))})
+                (t/tagged "array" ret)))
+       :stringRep (fn [v] nil)})
 
 (defn map-handler []
   #js {:tag (fn [v] "map")
@@ -96,8 +101,8 @@
                    cljs.core/IndexedSeq            (list-handler)
                    cljs.core/ChunkedCons           (list-handler)
                    cljs.core/ChunkedSeq            (list-handler)
-                   cljs.core/PersisteQueueSeq      (list-handler)
-                   cljs.core/PersisteQueue         (list-handler)
+                   cljs.core/PersistentQueueSeq    (list-handler)
+                   cljs.core/PersistentQueue       (list-handler)
                    cljs.core/PersistentArrayMapSeq (list-handler)
                    cljs.core/PersistentTreeMapSeq  (list-handler)
                    cljs.core/NodeSeq               (list-handler)
