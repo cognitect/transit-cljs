@@ -14,8 +14,8 @@
   (dotimes [_ 100]
     (. r (read json))))
 
-(println "100 iters, cljs.reader/read-string seattle file")
+(println "10 iters, cljs.reader/read-string seattle file")
 (def edn (pr-str (. r (read json))))
 (time
-  (dotimes [_ 100]
+  (dotimes [_ 10]
     (r/read-string edn)))
