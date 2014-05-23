@@ -15,7 +15,7 @@
   (dotimes [_ 100]
     (.read r json)))
 
-(println "100 iters, JSON.parse seattle ata")
+(println "100 iters, JSON.parse seattle data")
 (time
   (dotimes [_ 100]
     (.parse js/JSON json)))
