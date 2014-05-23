@@ -105,8 +105,12 @@
            vector-handler  (VectorHandler.)]
       (t/writer (name type)
         (opts-merge
-          #js {:mapIterator
-               (fn [m] (MapIterator. (seq m)))
+          #js {:objectBuilder
+               (fn [m kfn vfn]
+                 (reduce-kv
+                   (fn [obj k v]
+                     (doto obj (aset (kfn k) (vfn v))))
+                   #js {} m))
                :handlers
                #js [cljs.core/Keyword               keyword-handler
                     cljs.core/Symbol                symbol-handler
