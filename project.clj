@@ -36,8 +36,8 @@
               :compiler {
                 :output-to "target/transit.bench.js"
                 :output-dir "target/out-bench"
-                :optimizations :simple
-                :static-fns true}}
+                :optimizations :advanced
+                :externs ["resources/node_externs.js"]}}
              {:id "adv"
               :source-paths ["src"]
               :compiler {
