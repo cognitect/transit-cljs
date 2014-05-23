@@ -29,8 +29,8 @@
               :compiler {
                 :output-to "target/roundtrip.js"
                 :output-dir "target/out-roundtrip"
-                :optimizations :simple
-                :static-fns true}}
+                :optimizations :advanced
+                :externs ["resources/node_externs.js"]}}
              {:id "bench"
               :source-paths ["src" "bench"] 
               :compiler {
