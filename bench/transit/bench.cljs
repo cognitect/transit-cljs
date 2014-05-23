@@ -9,24 +9,30 @@
 (def r (t/reader :json))
 (def w (t/writer :json))
 
-(println "100 iters, transit read seattle file")
-(println (. r (read json)))
+(println "100 iters, transit read seattle data")
+(println (.read r json))
 (time
   (dotimes [_ 100]
     (.read r json)))
 
-(println "100 iters, JSON.parse seattle file")
+(println "100 iters, JSON.parse seattle ata")
 (time
   (dotimes [_ 100]
     (.parse js/JSON json)))
 
-(println "100 iters, transit write seattle file")
-(let [seattle (. r (read json))]
+(println "100 iters, transit write seattle data")
+(let [seattle (.read r json)]
   (time
     (dotimes [_ 100] 
       (.write w seattle))))
 
-(println "10 iters, cljs.reader/read-string seattle file")
+(println "100 iters, JSON.stringify seattle data")
+(let [seattle (.parse js/JSON json)]
+  (time
+    (dotimes [_ 100] 
+      (.stringify js/JSON seattle))))
+
+(println "10 iters, cljs.reader/read-string seattle data")
 (def edn (pr-str (.read r json)))
 (time
   (dotimes [_ 10]
