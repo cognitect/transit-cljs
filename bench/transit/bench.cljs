@@ -32,8 +32,6 @@
     (dotimes [_ 100] 
       (.write w-nc seattle))))
 
-(println (.write w-nc [:foo :foo]))
-
 (println "100 iters, JSON.stringify seattle data")
 (let [seattle (.parse js/JSON json)]
   (time
