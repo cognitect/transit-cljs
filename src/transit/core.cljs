@@ -8,7 +8,7 @@
 
 (defn opts-merge [a b]
   (doseq [k (js-keys b)]
-    (when-let [v (aget b k)]
+    (let [v (aget b k)]
       (if (not= k "handlers")
         (aset a k v)
         (aset a k (.concat (aget a k) (aget b k))))))
