@@ -86,14 +86,6 @@
       ret))
   (stringRep [_ v] nil))
 
-(deftype MapIterator [^:mutable seq]
-  Object
-  (hasNext [_] (not (nil? seq)))
-  (next [_]
-    (let [me (first seq)]
-      (set! seq (next seq))
-      (.-tail me))))
-
 (defn writer
   ([type] (writer type nil))
   ([type opts]
