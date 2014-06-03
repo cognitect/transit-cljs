@@ -1,3 +1,4 @@
+var require = function() {};
 var fs = {};
 fs.readFileSync = function() {};
 var process = {};
