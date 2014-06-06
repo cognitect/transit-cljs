@@ -8,7 +8,7 @@
 
 (println "testing basic transit write")
 (assert (= (.write w 1) "{\"~#'\":1}"))
-(assert (= (.write w (js/Date. 1399471321791)) "{\"~#'\":\"~t2014-05-07T14:02:01.791Z\"}"))
+(assert (= (.write w (js/Date. 1399471321791)) "{\"~#'\":\"~t1399471321791\"}"))
 (assert (= (.write w {:foo "bar"}) "{\"~:foo\":\"bar\"}"))
 (assert (= (.write w [1 2 3]) "[1,2,3]"))
 (assert (= (.write w #{1 2 3}) "{\"~#set\":[1,2,3]}"))
@@ -17,7 +17,7 @@
 (assert (= (.write w (range 3)) "{\"~#list\":[0,1,2]}"))
 (assert (= (.write w (take 3 (repeat true))) "{\"~#list\":[true,true,true]}"))
 (assert (= (.write w #js [1 2 3]) "[1,2,3]"))
-(assert (= (.write w #js {"foo" "bar"}) "{\"foo\":\"bar\"}"))
+(assert (= (.write w #js {"foo" "bar"}) "[\"^ \",\"foo\",\"bar\"]"))
 
 (println "testing basic transit read")
 (assert (= (.read r "{\"~#'\":1}") 1))
