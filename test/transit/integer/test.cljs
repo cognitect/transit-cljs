@@ -11,4 +11,17 @@
 (let [arr (.read r "[\"~i1\"]")]
   (assert (= (.toString (.shiftLeft (aget arr 0) 16)) "65536")))
 
+(deftype IntegerHandler []
+  Object
+  (tag [_ v] "i")
+  (rep [_ v] (.toString v))
+  (stringRep [_ v] (.toString v)))
+
+(def w (t/writer "json"
+         #js {"handlers"
+              #js [Long (IntegerHandler.)]}))
+
+(let [arr (.read r "[\"~i1\"]")]
+  (assert (= (.write w (.shiftLeft (aget arr 0) 16)) "{\"~#'\":\"~i65536\"}")))
+
 (println "ok")
