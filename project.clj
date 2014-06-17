@@ -52,6 +52,7 @@
                 :output-to "target/transit.bench.js"
                 :output-dir "target/out-bench"
                 :optimizations :advanced
+                :pretty-print false
                 :externs ["resources/node_externs.js"]}}
              {:id "adv"
               :source-paths ["src"]

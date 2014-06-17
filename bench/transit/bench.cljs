@@ -21,6 +21,12 @@
   (dotimes [_ 100]
     (.read r json)))
 
+(println "100 iters, JSON.stringify seattle data")
+(let [seattle (.parse js/JSON rjson)]
+  (time
+    (dotimes [_ 100] 
+      (.stringify js/JSON seattle))))
+
 (println "100 iters, transit write seattle data")
 (let [seattle (.read r json)]
   (time
@@ -33,8 +39,3 @@
     (dotimes [_ 100] 
       (.write w-nc seattle))))
 
-(println "100 iters, JSON.stringify seattle data")
-(let [seattle (.parse js/JSON rjson)]
-  (time
-    (dotimes [_ 100] 
-      (.stringify js/JSON seattle))))
