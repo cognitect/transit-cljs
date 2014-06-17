@@ -36,8 +36,8 @@
                    ":" (fn [v] (keyword v))
                    "set" (fn [v] (into #{} v))
                    "list" (fn [v] (into () (.reverse v)))}
-              :defaultMapBuilder (MapBuilder.)
-              :defaultArrayBuilder (VectorBuilder.)
+              :mapBuilder (MapBuilder.)
+              :arrayBuilder (VectorBuilder.)
               :prefersStrings false}
          (clj->js opts)))))
 
