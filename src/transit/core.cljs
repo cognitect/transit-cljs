@@ -101,8 +101,8 @@
                (fn [m kfn vfn]
                  (reduce-kv
                    (fn [obj k v]
-                     (doto obj (aset (kfn k) (vfn v))))
-                   #js {} m))
+                     (doto obj (.push (kfn k) (vfn v))))
+                   #js ["^ "] m))
                :handlers
                #js [cljs.core/Keyword               keyword-handler
                     cljs.core/Symbol                symbol-handler

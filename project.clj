@@ -4,7 +4,7 @@
 
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [org.clojure/clojurescript "0.0-2227"]
-                 [com.cognitect/transit-js "0.1.354"]]
+                 [com.cognitect/transit-js "0.1.355"]]
 
   :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]]
 
@@ -18,6 +18,13 @@
                 :output-dir "target/out-dev"
                 :optimizations :none
                 :source-map true}}
+             {:id "test-dev"
+              :source-paths ["src" "test/transit/test"] 
+              :compiler {
+                :output-to "target/transit.test.js"
+                :output-dir "target/out-dev-test"
+                :optimizations :simple
+                :pretty-print true}}
              {:id "test"
               :source-paths ["src" "test/transit/test"] 
               :compiler {
