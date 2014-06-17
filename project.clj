@@ -30,7 +30,8 @@
               :compiler {
                 :output-to "target/transit.test.js"
                 :output-dir "target/out-test"
-                :optimizations :advanced}}
+                :optimizations :advanced
+                :pretty-print false}}
              {:id "integer-test"
               :source-paths ["src" "test/transit/integer"] 
               :compiler {
