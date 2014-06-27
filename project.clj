@@ -6,7 +6,8 @@
                  [org.clojure/clojurescript "0.0-2227"]
                  [com.cognitect/transit-js "0.1.355"]]
 
-  :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]]
+  :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]
+            [codox "0.8.9"]]
 
   :source-paths ["src"]
 
@@ -60,4 +61,10 @@
                 :output-to "target/transit.adv.js"
                 :output-dir "target/out-adv"
                 :optimizations :advanced
-                :pretty-print false}}]})
+                :pretty-print false}}]}
+
+  :codox {:language :clojurescript
+          :output-dir "doc"
+          :src-dir-uri "http://github.com/cognitect/transit-cljs/blob/master/"
+          :src-linenum-anchor-prefix "L"}
+)
