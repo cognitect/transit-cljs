@@ -33,13 +33,6 @@
                 :output-dir "target/out-test"
                 :optimizations :advanced
                 :pretty-print false}}
-             {:id "integer-test"
-              :source-paths ["src" "test/transit/integer"] 
-              :compiler {
-                :output-to "target/transit.integer.test.js"
-                :output-dir "target/out-integer-test"
-                :optimizations :none
-                :source-map true}}
              {:id "roundtrip"
               :source-paths ["src" "test/transit/roundtrip"] 
               :compiler {
