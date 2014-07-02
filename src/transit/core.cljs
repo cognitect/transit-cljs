@@ -27,6 +27,10 @@
   (finalize [_ v] (persistent! v)))
 
 (defn reader
+  "Return a transit reader. type may be either :json or :json-verbose.
+   opts may be a map optionally containing a :decoders entry. The value
+   of :decoders should be map from tag to a decoder function which returns
+   then in-memory representation of the semantic transit value."
   ([type] (reader type nil))
   ([type opts]
      (t/reader (name type)
@@ -87,6 +91,10 @@
   (stringRep [_ v] nil))
 
 (defn writer
+  "Return a transit writer. type maybe either :json or :json-verbose.
+   opts is a map containing a :handlers entry. :handlers is a JavaScript
+   array of interleaved type constructors and handler instances for those 
+   type constructors."
   ([type] (writer type nil))
   ([type opts]
      (let [keyword-handler (KeywordHandler.)
