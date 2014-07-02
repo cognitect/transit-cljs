@@ -2,8 +2,8 @@
   :description "transit-js bindings for ClojureScript"
   :url "http://github.com/cognitect/transit-cljs"
 
-  :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojure/clojurescript "0.0-2234"]
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [org.clojure/clojurescript "0.0-2261"]
                  [com.cognitect/transit-js "0.1.416"]]
 
   :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]
@@ -24,8 +24,8 @@
               :compiler {
                 :output-to "target/transit.test.js"
                 :output-dir "target/out-dev-test"
-                :optimizations :simple
-                :pretty-print true}}
+                :optimizations :none
+                :source-map true}}
              {:id "test"
               :source-paths ["src" "test/transit/test"] 
               :compiler {
