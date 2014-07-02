@@ -17,18 +17,18 @@ lein cljsbuild once test
 open index.html
 ```
 
-Running the benchmarks:
-
-```
-lein cljsbuild once bench
-node target/transit.bench.js
-```
-
 In order to run the `bin/verify` tests you must first build the
 roundtrip file:
 
 ```
 lein cljsbuild once roundtrip
+```
+
+Running the benchmarks:
+
+```
+lein cljsbuild once bench
+node target/transit.bench.js
 ```
 
 ## License
