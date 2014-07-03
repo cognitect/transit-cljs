@@ -28,14 +28,14 @@
 
 (defn reader
   "Return a transit reader. type may be either :json or :json-verbose.
-   opts may be a map optionally containing a :decoders entry. The value
-   of :decoders should be map from tag to a decoder function which returns
+   opts may be a map optionally containing a :handlers entry. The value
+   of :handlers should be map from tag to a decoder function which returns
    then in-memory representation of the semantic transit value."
   ([type] (reader type nil))
   ([type opts]
      (t/reader (name type)
        (opts-merge
-         #js {:decoders
+         #js {:handlers
               #js {"$" (fn [v] (symbol v))
                    ":" (fn [v] (keyword v))
                    "set" (fn [v] (into #{} v))
