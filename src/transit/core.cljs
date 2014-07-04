@@ -9,9 +9,7 @@
 (defn opts-merge [a b]
   (doseq [k (js-keys b)]
     (let [v (aget b k)]
-      (if (not= k "handlers")
-        (aset a k v)
-        (aset a k (.concat (aget a k) (aget b k))))))
+      (aset a k v)))
   a)
 
 (deftype MapBuilder []
@@ -102,7 +100,36 @@
            list-handler    (ListHandler.)
            map-handler     (MapHandler.)
            set-handler     (SetHandler.)
-           vector-handler  (VectorHandler.)]
+           vector-handler  (VectorHandler.)
+           handlers
+           (merge
+             {cljs.core/Keyword               keyword-handler
+              cljs.core/Symbol                symbol-handler
+              cljs.core/Range                 list-handler
+              cljs.core/List                  list-handler
+              cljs.core/Cons                  list-handler
+              cljs.core/EmptyList             list-handler
+              cljs.core/LazySeq               list-handler
+              cljs.core/RSeq                  list-handler
+              cljs.core/IndexedSeq            list-handler
+              cljs.core/ChunkedCons           list-handler
+              cljs.core/ChunkedSeq            list-handler
+              cljs.core/PersistentQueueSeq    list-handler
+              cljs.core/PersistentQueue       list-handler
+              cljs.core/PersistentArrayMapSeq list-handler
+              cljs.core/PersistentTreeMapSeq  list-handler
+              cljs.core/NodeSeq               list-handler
+              cljs.core/ArrayNodeSeq          list-handler
+              cljs.core/KeySeq                list-handler
+              cljs.core/ValSeq                list-handler
+              cljs.core/PersistentArrayMap    map-handler
+              cljs.core/PersistentHashMap     map-handler
+              cljs.core/PersistentTreeMap     map-handler
+              cljs.core/PersistentHashSet     set-handler
+              cljs.core/PersistentTreeSet     set-handler
+              cljs.core/PersistentVector      vector-handler
+              cljs.core/Subvec                vector-handler}
+             (:handlers opts))]
       (t/writer (name type)
         (opts-merge
           #js {:objectBuilder
@@ -112,31 +139,11 @@
                      (doto obj (.push (kfn k) (vfn v))))
                    #js ["^ "] m))
                :handlers
-               #js [cljs.core/Keyword               keyword-handler
-                    cljs.core/Symbol                symbol-handler
-                    cljs.core/Range                 list-handler
-                    cljs.core/List                  list-handler
-                    cljs.core/Cons                  list-handler
-                    cljs.core/EmptyList             list-handler
-                    cljs.core/LazySeq               list-handler
-                    cljs.core/RSeq                  list-handler
-                    cljs.core/IndexedSeq            list-handler
-                    cljs.core/ChunkedCons           list-handler
-                    cljs.core/ChunkedSeq            list-handler
-                    cljs.core/PersistentQueueSeq    list-handler
-                    cljs.core/PersistentQueue       list-handler
-                    cljs.core/PersistentArrayMapSeq list-handler
-                    cljs.core/PersistentTreeMapSeq  list-handler
-                    cljs.core/NodeSeq               list-handler
-                    cljs.core/ArrayNodeSeq          list-handler
-                    cljs.core/KeySeq                list-handler
-                    cljs.core/ValSeq                list-handler
-                    cljs.core/PersistentArrayMap    map-handler
-                    cljs.core/PersistentHashMap     map-handler
-                    cljs.core/PersistentTreeMap     map-handler
-                    cljs.core/PersistentHashSet     set-handler
-                    cljs.core/PersistentTreeSet     set-handler
-                    cljs.core/PersistentVector      vector-handler
-                    cljs.core/Subvec                vector-handler]}
-          (clj->js opts))))))
+               (specify handlers
+                 Object
+                 (forEach
+                   ([coll f]
+                      (doseq [[k v] coll]
+                        (f v k)))))}
+          (clj->js (dissoc opts :handlers)))))))
 
