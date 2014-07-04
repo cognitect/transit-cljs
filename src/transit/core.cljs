@@ -18,7 +18,8 @@
   Object
   (init [_] (transient {}))
   (add [_ m k v] (assoc! m k v))
-  (finalize [_ m] (persistent! m)))
+  (finalize [_ m] (persistent! m))
+  (fromArray [_ arr] (cljs.core/PersistentArrayMap.fromArray arr true true)))
 
 (deftype VectorBuilder []
   Object
