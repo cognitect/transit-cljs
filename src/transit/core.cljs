@@ -145,6 +145,11 @@
                  (forEach
                    ([coll f]
                       (doseq [[k v] coll]
-                        (f v k)))))}
+                        (f v k)))))
+               :unpack
+               (fn [x]
+                 (if (instance? cljs.core/PersistentArrayMap x)
+                   (.-arr x)
+                   false))}
           (clj->js (dissoc opts :handlers)))))))
 
