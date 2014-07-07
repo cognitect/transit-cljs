@@ -39,3 +39,16 @@
     (dotimes [_ 100] 
       (.write w-nc seattle))))
 
+(println "100 iters, pr-str seattle data")
+(let [seattle (pr-str (.read r json))]
+  (time
+    (dotimes [_ 100] 
+      (r/read-string seattle))))
+
+(println "100 iters, pr-str seattle data")
+(let [seattle (.read r json)]
+  (time
+    (dotimes [_ 100] 
+      (pr-str seattle))))
+
+
