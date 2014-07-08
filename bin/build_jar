@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+cd src
+
+jar cf transit-cljs.jar transit
+
+mkdir -p ../target
+
+mv transit-cljs.jar ../target/
