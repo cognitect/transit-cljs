@@ -34,7 +34,8 @@
   Object
   (init [_] (transient []))
   (add [_ v x] (conj! v x))
-  (finalize [_ v] (persistent! v)))
+  (finalize [_ v] (persistent! v))
+  (fromArray [_ arr] (cljs.core/PersistentVector.fromArray arr true)))
 
 (defn reader
   "Return a transit reader. type may be either :json or :json-verbose.
