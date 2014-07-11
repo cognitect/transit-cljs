@@ -56,7 +56,7 @@
               :prefersStrings false}
          (clj->js opts)))))
 
-(def read [w str]
+(defn read [w str]
   (.read w str))
 
 (deftype KeywordHandler []
