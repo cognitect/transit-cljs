@@ -56,6 +56,9 @@
               :prefersStrings false}
          (clj->js opts)))))
 
+(def read [w str]
+  (.read w str))
+
 (deftype KeywordHandler []
   Object
   (tag [_ v] ":")
@@ -165,3 +168,5 @@
                    false))}
           (clj->js (dissoc opts :handlers)))))))
 
+(defn write [w o]
+  (.write w o))
