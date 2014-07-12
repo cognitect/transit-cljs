@@ -11,6 +11,16 @@ Transit is a data format and a set of libraries for conveying values between app
 * Latest release: TBD
 * [All Released Versions](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.cognitect%22%20AND%20a%3A%22transit-cljs%22)
 
+### Leiningen
+
+Add the following to your `project.clj` `:dependencies`:
+
+```
+[com.cognitect/transit-cljs "TBD"]
+```
+
+### Maven
+
 [Maven](http://maven.apache.org/) dependency information:
 
 ```xml
