@@ -37,10 +37,16 @@ Transit is a data format and a set of libraries for conveying values between app
   (let [list1 [:red :green :blue]
         list2 [:apple :pear :grape]
         data  {(Long.fromInt 1) list1
-               (Long.fromInt 2) list 2}
+               (Long.fromInt 2) list2}
         data' (roundtrip data)]
     (asssert (= data data'))))
 ```
+
+## Contributing 
+
+Please discuss potential problems or enhancements on the [transit-format mailing list](https://groups.google.com/forum/#!forum/transit-format). Issues should be filed using GitHub issues for this project.
+
+Contributing to Cognitect projects requires a signed [Cognitect Contributor Agreement](http://cognitect.com/contributing).
 
 ## Development
 
