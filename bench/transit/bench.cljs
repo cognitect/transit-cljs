@@ -13,7 +13,7 @@
 ;; limitations under the License.
 
 (ns transit.test
-  (:require [com.cognitect.transit-cljs :as t]
+  (:require [cognitect.transit :as t]
             [cljs.reader :as r]))
 
 (enable-console-print!)

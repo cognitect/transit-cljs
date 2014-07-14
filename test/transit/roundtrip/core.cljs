@@ -13,7 +13,7 @@
 ;; limitations under the License.
 
 (ns transit.roundtrip.core
-  (:require [com.cognitect.transit-cljs :as t]))
+  (:require [cognitect.transit :as t]))
 
 (def transport (or (aget (.-argv js/process) 2) :json))
 (def r (t/reader transport))

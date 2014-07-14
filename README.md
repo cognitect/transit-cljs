@@ -35,7 +35,7 @@ Add the following to your `project.clj` `:dependencies`:
 
 ```clojurescript
 (ns example
-  (:require [com.cognitect.transit-cljs :as t])
+  (:require [cognitect.transit :as t])
   (:import [goog.math Long]))
 
 (defn roundtrip [x]

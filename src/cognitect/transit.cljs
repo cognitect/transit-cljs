@@ -12,7 +12,7 @@
 ;; See the License for the specific language governing permissions and
 ;; limitations under the License.
 
-(ns com.cognitect.transit-cljs
+(ns cognitect.transit
   (:require [com.cognitect.transit :as t]))
 
 (enable-console-print!)
