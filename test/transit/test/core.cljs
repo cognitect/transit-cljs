@@ -71,4 +71,20 @@
 ;; (assert (= (roundtrip "[\"^ \",\"~:key0000\",0,\"~:key0001\",1,\"~:key0002\",2,\"~:key0003\",3,\"~:key0004\",4,\"~:key0005\",5,\"~:key0006\",6,\"~:key0007\",7,\"~:key0008\",8,\"~:key0009\",9]")
 ;;                       "[\"^ \",\"~:key0000\",0,\"~:key0001\",1,\"~:key0002\",2,\"~:key0003\",3,\"~:key0004\",4,\"~:key0005\",5,\"~:key0006\",6,\"~:key0007\",7,\"~:key0008\",8,\"~:key0009\",9]"))
 
+(println "----------")
+(println "constructor & predicates API")
+
+(def p0 (t/read r "{\"~#point\":[1.5,2.5]}"))
+(assert (t/tagged? p0))
+(def p1 (t/read r "{\"~#point\":[1.5,2.5]}"))
+(assert (= p0 p1))
+(def m0 {p0 :foo})
+(assert (= (get m0 p0) :foo))
+(def uuid0 (t/read r "{\"~#'\":\"~u2f9e540c-0591-eff5-4e77-267b2cb3951f\"}"))
+(assert (t/uuid? uuid0))
+(def uuid1 (t/read r "{\"~#'\":\"~u2f9e540c-0591-eff5-4e77-267b2cb3951f\"}"))
+(assert (= uuid0 uuid1))
+(def m1 {uuid0 :bar})
+(assert (= (get m1 uuid0) :bar))
+
 (println "ok")

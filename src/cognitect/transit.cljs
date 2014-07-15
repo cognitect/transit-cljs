@@ -13,9 +13,38 @@
 ;; limitations under the License.
 
 (ns cognitect.transit
-  (:require [com.cognitect.transit :as t]))
+  (:require [com.cognitect.transit :as t]
+            [com.cognitect.transit.types :as ty]
+            [com.cognitect.transit.eq :as eq])
+  (:import [goog.math Long]))
 
 (enable-console-print!)
+
+(extend-protocol IEquiv
+  Long
+  (-equiv [this other]
+    (.equiv this other))
+  
+  ty/UUID
+  (-equiv [this other]
+    (.equiv this other))
+
+  ty/TaggedValue
+  (-equiv [this other]
+    (.equiv this other)))
+
+(extend-protocol IHash
+  Long
+  (-hash [this]
+    (eq/hashCode this))
+
+  ty/UUID
+  (-has [this]
+    (eq/hashCode this))
+
+  ty/TaggedValue
+  (-has [this]
+    (eq/hashCode this)))
 
 (defn opts-merge [a b]
   (doseq [k (js-keys b)]
@@ -56,8 +85,11 @@
               :prefersStrings false}
          (clj->js opts)))))
 
-(defn read [w str]
-  (.read w str))
+(defn read
+  "Read a transit encoded string into ClojureScript values given a 
+   transit reader."
+  [r str]
+  (.read r str))
 
 (deftype KeywordHandler []
   Object
@@ -168,5 +200,46 @@
                    false))}
           (clj->js (dissoc opts :handlers)))))))
 
-(defn write [w o]
+(defn write
+  "Encode an object into a transit string given a transit writer."
+  [w o]
   (.write w o))
+
+;; =============================================================================
+;; Constructors & Predicates
+
+(defn tagged [tag rep]
+  (ty/taggedValue tag rep))
+
+(defn tagged? [x]
+  (ty/isTaggedValue x))
+
+(defn longValue [s]
+  (ty/integer s))
+
+(defn longValue? [x]
+  (ty/isInteger x))
+
+(defn uuid [s]
+  (ty/uuid s))
+
+(defn uuid? [x]
+  (ty/isUUID x))
+
+(defn binary [s]
+  (ty/binary s))
+
+(defn binary? [x]
+  (ty/isBinary x))
+
+(defn quoted [x]
+  (ty/quoted x))
+
+(defn quoted? [x]
+  (ty/isQuoted x))
+
+(defn link [x]
+  (ty/link x))
+
+(defn link? [x]
+  (ty/isLink x))
