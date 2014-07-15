@@ -208,38 +208,102 @@
 ;; =============================================================================
 ;; Constructors & Predicates
 
-(defn tagged [tag rep]
+(defn tagged
+  "Construct a tagged value. tag must be a string and rep can
+   be any transit encodeable value."
+  [tag rep]
   (ty/taggedValue tag rep))
 
-(defn tagged? [x]
+(defn tagged?
+  "Returns true if x is a transit tagged value, false otherwise."
+  [x]
   (ty/isTaggedValue x))
 
-(defn longValue [s]
+(defn integerValue
+  "Construct a transit integer value. Returns JavaScript number if
+  in the 53bit integer range, a goog.math.Long instance if above. s
+  may be a string or a JavaScript number."
+  [s]
   (ty/integer s))
 
-(defn longValue? [x]
+(defn integerValue?
+  "Returns true if x is an integer value between the 53bit and 64bit
+  range, false otherwise."
+  [x]
   (ty/isInteger x))
 
-(defn uuid [s]
+(defn big-int
+  "Construct a big decimal from a string."
+  [s]
+  (ty/bigInteger s))
+
+(defn big-int?
+  "Returns true if x is a transit big decimal value, false otherwise."
+  [x]
+  (ty/isBigInteger x))
+
+(defn big-dec
+  "Construct a big decimal from a string."
+  [s]
+  (ty/bigDecimalValue s))
+
+(defn big-dec?
+  "Returns true if x is a transit big decimal value, false otherwise."
+  [x]
+  (ty/isBigDecimal x))
+
+(defn uri
+  "Construct a URI from a string."
+  [s]
+  (ty/uri s))
+
+(defn uri?
+  "Returns true if x is a transit URI value, false otherwise."
+  [x]
+  (ty/isURI x))
+
+(defn uuid
+  "Construct a UUID from a string."
+  [s]
   (ty/uuid s))
 
-(defn uuid? [x]
+(defn uuid?
+  "Returns true if x is a transit UUID value, false otherwise."
+  [x]
   (ty/isUUID x))
 
-(defn binary [s]
+(defn binary
+  "Construct a transit binary value. s should be base64 encoded
+   string."
+  [s]
   (ty/binary s))
 
-(defn binary? [x]
+(defn binary?
+  "Returns true if x is a transit binary value, false otherwise."
+  [x]
   (ty/isBinary x))
 
-(defn quoted [x]
+(defn quoted
+  "Construct a quoted transit value. x should be a transit
+   encodeable value."
+  [x]
   (ty/quoted x))
 
-(defn quoted? [x]
+(defn quoted?
+  "Returns true if x is a transit quoted value, false otherwise."
+  [x]
   (ty/isQuoted x))
 
-(defn link [x]
+(defn link
+  "Construct a transit link value. x should be an IMap instance
+   containing at a minimum the following keys: :href, :rel. It
+   may optionall include :name, :render, and :prompt. :href must
+   be a transit URI, all other values are strings, and :render must
+   be either :image or :link."
+  [x]
   (ty/link x))
 
-(defn link? [x]
+(defn link?
+  "Returns true if x a transit link value, false if otherwise."
+  [x]
   (ty/isLink x))
