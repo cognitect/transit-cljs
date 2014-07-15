@@ -87,7 +87,7 @@
 (def m1 {uuid0 :bar})
 (assert (= (get m1 uuid0) :bar))
 (def l0 (t/read r "{\"~#'\":\"~i9007199254740993\"}"))
-(assert (t/integerValue? l0))
+(assert (t/integer? l0))
 (def l1 (t/read r "{\"~#'\":\"~i9007199254740993\"}"))
 (def m2 {l0 :baz})
 (assert (= (get m2 l0) :baz))

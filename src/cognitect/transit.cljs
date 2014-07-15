@@ -13,6 +13,7 @@
 ;; limitations under the License.
 
 (ns cognitect.transit
+  (:refer-clojure :exclude [integer?])
   (:require [com.cognitect.transit :as t]
             [com.cognitect.transit.types :as ty]
             [com.cognitect.transit.eq :as eq])
@@ -219,14 +220,14 @@
   [x]
   (ty/isTaggedValue x))
 
-(defn integerValue
+(defn integer
   "Construct a transit integer value. Returns JavaScript number if
   in the 53bit integer range, a goog.math.Long instance if above. s
   may be a string or a JavaScript number."
   [s]
   (ty/integer s))
 
-(defn integerValue?
+(defn integer?
   "Returns true if x is an integer value between the 53bit and 64bit
   range, false otherwise."
   [x]
