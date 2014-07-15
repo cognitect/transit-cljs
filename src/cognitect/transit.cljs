@@ -233,22 +233,22 @@
   [x]
   (ty/isInteger x))
 
-(defn big-int
+(defn bigint
   "Construct a big decimal from a string."
   [s]
   (ty/bigInteger s))
 
-(defn big-int?
+(defn bigint?
   "Returns true if x is a transit big decimal value, false otherwise."
   [x]
   (ty/isBigInteger x))
 
-(defn big-dec
+(defn bigdec
   "Construct a big decimal from a string."
   [s]
   (ty/bigDecimalValue s))
 
-(defn big-dec?
+(defn bigdec?
   "Returns true if x is a transit big decimal value, false otherwise."
   [x]
   (ty/isBigDecimal x))
