@@ -35,8 +35,7 @@ Add the following to your `project.clj` `:dependencies`:
 
 ```clojurescript
 (ns example
-  (:require [cognitect.transit :as t])
-  (:import [goog.math Long]))
+  (:require [cognitect.transit :as t]))
 
 (defn roundtrip [x]
   (let [w (t/writer :json)
@@ -46,8 +45,8 @@ Add the following to your `project.clj` `:dependencies`:
 (defn test-roundtrip []
   (let [list1 [:red :green :blue]
         list2 [:apple :pear :grape]
-        data  {(Long.fromInt 1) list1
-               (Long.fromInt 2) list2}
+        data  {(t/integer 1) list1
+               (t/integer 2) list2}
         data' (roundtrip data)]
     (asssert (= data data'))))
 ```
