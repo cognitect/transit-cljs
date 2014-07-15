@@ -77,14 +77,6 @@ Abbreviations:
 |array|cc.IVector|cc.IVector|
 |set|cc.ISet|cc.ISet|
 |map|cc.IMap|cc.IMap|
-|bytes|cc.IVector|cc.IVector|
-|shorts|cc.IVector|cc.IVector|
-|ints|cc.IVector|cc.IVector|
-|longs|cc.IVector|cc.IVector|
-|floats|cc.IVector|cc.IVector|
-|doubles|cc.IVector|cc.IVector|
-|chars|cc.IVector|cc.IVector|
-|bools|cc.IVector|cc.IVector|
 |link|cct.Link|cct.Link|
 
 ## Contributing 
