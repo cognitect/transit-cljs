@@ -63,7 +63,7 @@ Abbreviations:
 |null|null|null|
 |string|String|String|
 |boolean|Boolean|Boolean|
-|integer|Number|Number, gm.Long|
+|integer|Number, gm.Long|Number, gm.Long|
 |decimal|Number|Number|
 |keyword|cc.Keyword|cc.Keyword|
 |symbol|cc.Symbol|cc.Symbol|
