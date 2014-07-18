@@ -19,8 +19,8 @@
 (enable-console-print!)
 
 (def fs (js/require "fs"))
-(def rjson (. fs (readFileSync "../transit/seattle-data0.jsonv" "utf8")))
-(def json (. fs (readFileSync "../transit/seattle-data0.json" "utf8")))
+(def rjson (. fs (readFileSync "../transit-format/examples/0.8/example.verbose.json" "utf8")))
+(def json (. fs (readFileSync "../transit-format/examples/0.8/example.json" "utf8")))
 (def r (t/reader :json))
 (def w (t/writer :json))
 (def w-nc (t/writer :json {:cache false}))
