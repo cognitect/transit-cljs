@@ -3,16 +3,29 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cognitect</groupId>
   <artifactId>transit-cljs</artifactId>
-  <packaging>jar</packaging>
   <version>dev</version>
-  <name>transit-cljs</name>
-  <url>http://maven.apache.org</url>
+  <packaging>jar</packaging>
+  <name>${project.groupId}:${project.artifactId}</name>
+  <url>http://github.com/cognitect/transit-cljs</url>
   <licenses>
     <license>
-      <name>Eclipse Public License</name>
-      <url>http://www.eclipse.org/legal/epl-v10.html</url>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
     </license>
   </licenses>
+  <developers>
+    <developer>
+      <name>David Nolen</name>
+      <email>david.nolen@cognitect.com</email>
+      <organization>Cognitect</organization>
+      <organizationUrl>http://cognitect.com</organizationUrl>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git@github.com:cognitect/transit-cljs.git</connection>
+    <developerConnection>scm:git:git@github.com:cognitect/transit-cljs.git</developerConnection>
+    <url>git@github.com:cognitect/transit-cljs.git</url>
+  </scm>
   <dependencies>
     <dependency>
       <groupId>com.cognitect</groupId>
