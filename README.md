@@ -6,7 +6,7 @@ Transit is a data format and a set of libraries for conveying values between app
 * [API docs](http://cognitect.github.io/transit-java/)
 * [Specification](http://github.com/cognitect/transit-format)
 
-This implementation's major.minor version number corresponds to the version of it supports.
+This implementation's major.minor version number corresponds to the version of the Transit specification it supports.
 
 _NOTE: Transit is a work in progress and may evolve based on feedback.
 As a result, while Transit is a great option for transferring data
