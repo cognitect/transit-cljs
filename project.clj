@@ -9,6 +9,18 @@
   :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]
             [codox "0.8.9"]]
 
+  :scm {:connection "scm:git:git@github.com:cognitect/transit-cljs.git"
+        :developerConnection "scm:git:git@github.com:cognitect/transit-cljs.git"
+        :url "git@github.com:cognitect/transit-cljs.git"}
+  :pom-addition [:developers [:developer
+                              [:name "David Nolen"]
+                              [:email "david.nolen@cognitect.com"]
+                              [:organization "Cognitect"]
+                              [:organizationUrl "http://cognitect.com"]]]
+  :license {:name "The Apache Software License, Version 2.0"
+            :url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            :distribution :repo}
+
   :source-paths ["src"]
 
   :cljsbuild { 
