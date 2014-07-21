@@ -1,6 +1,5 @@
 *.iml
 .idea
-pom.xml
 *jar
 /lib/
 /classes/
