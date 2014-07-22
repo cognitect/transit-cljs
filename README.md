@@ -19,13 +19,6 @@ specification is complete._
 * Latest release: 0.8.137
 * [All Released Versions](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.cognitect%22%20AND%20a%3A%22transit-cljs%22)
 
-### Download and install
-
-1. Download and unzip http://cdn.cognitect.com/transit/transit-js-0.8.616.zip
-2. Download and unzip http://cdn.cognitect.com/transit/transit-cljs-0.8.137.zip
-3. From the unzip directory: ```mvn install:install-file -DgroupId=com.cognitect -DartifactId=transit-js -Dfile=transit-js-0.8.616.jar -DpomFile=transit-js-0.8.616.pom```
-4. From the unzip directory: ```mvn install:install-file -DgroupId=com.cognitect -DartifactId=transit-cljs -Dfile=transit-cljs-0.8.137.jar -DpomFile=transit-cljs-0.8.137.pom```
-
 ### Leiningen
 
 Add the following to your `project.clj` `:dependencies`:
@@ -33,8 +26,6 @@ Add the following to your `project.clj` `:dependencies`:
 ```
 [com.cognitect/transit-cljs "0.8.137"]
 ```
-
-Note: Jar may not yet be available on Maven Central! If so, please download and install locally until it is available.
 
 ### Maven
 
@@ -47,8 +38,6 @@ Note: Jar may not yet be available on Maven Central! If so, please download and 
   <version>0.8.137</version>
 </dependency>
 ```
-
-Note: Jar may not yet be available on Maven Central! If so, please download and install locally until it is available.
 
 ## Usage
 
