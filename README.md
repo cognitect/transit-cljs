@@ -24,7 +24,7 @@ specification is complete._
 1. Download and unzip http://cdn.cognitect.com/transit/transit-js-0.8.616.zip
 2. Download and unzip http://cdn.cognitect.com/transit/transit-cljs-0.8.137.zip
 3. From the unzip directory: ```mvn install:install-file -DgroupId=com.cognitect -DartifactId=transit-js -Dfile=transit-js-0.8.616.jar -DpomFile=transit-js-0.8.616.pom```
-4. From the unzip directory: ```mvn install:install-file -DgroupId=com.cognitect -DartifactId=transit-cljs -Dfile=transit-cljs-0.8.137.jar -DpomFile=transit-js-0.8.137.pom```
+4. From the unzip directory: ```mvn install:install-file -DgroupId=com.cognitect -DartifactId=transit-cljs -Dfile=transit-cljs-0.8.137.jar -DpomFile=transit-cljs-0.8.137.pom```
 
 ### Leiningen
 
