@@ -56,7 +56,7 @@ Add the following to your `project.clj` `:dependencies`:
         data  {(t/integer 1) list1
                (t/integer 2) list2}
         data' (roundtrip data)]
-    (asssert (= data data'))))
+    (assert (= data data'))))
 ```
 
 ## Default Type Mapping
