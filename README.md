@@ -124,6 +124,20 @@ lein cljsbuild once bench
 node target/transit.bench.js
 ```
 
+### Build
+
+#### Build JAR for ClojureScript
+
+Assuming you have a
+[JDK](http://www.oracle.com/technetwork/java/javaee/downloads/java-ee-sdk-6u3-jdk-7u1-downloads-523391.html)
+and [Maven](http://maven.apache.org) installed, the following will
+install a JAR suitable for use from ClojureScript into your local
+Maven repository.
+
+```
+build/package_local
+```
+
 ## Copyright and License
 
 Copyright © 2014 Cognitect
