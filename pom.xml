@@ -72,12 +72,12 @@
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>clojurescript</artifactId>
-      <version>0.0-2268</version>
+      <version>0.0-2277</version>
     </dependency>
     <dependency>
       <groupId>com.cognitect</groupId>
       <artifactId>transit-js</artifactId>
-      <version>0.8.616</version>
+      <version>0.8.645</version>
     </dependency>
     <dependency>
       <groupId>org.clojure</groupId>
