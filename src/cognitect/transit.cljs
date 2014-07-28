@@ -206,16 +206,37 @@
   [w o]
   (.write w o))
 
+(defn read-handler
+  "Construct a read handler. Implemented as identity, exists primarily
+   for API compatiblity with transit-clj"
+  [from-rep]
+  from-rep)
+
+(defn write-handler
+  "Creates a transit write handler whose tag, rep,
+   stringRep, and verboseWriteHandler methods
+   invoke the provided fns."
+  ([tag-fn rep-fn]
+     (write-handler tag-fn rep-fn nil nil))
+  ([tag-fn rep-fn str-rep-fn]
+     (write-handler tag-fn rep-fn str-rep-fn nil))
+  ([tag-fn rep-fn str-rep-fn verbose-handler-fn]
+     (reify Object
+       (tag [_ o] (tag-fn o))
+       (rep [_ o] (rep-fn o))
+       (stringRep [_ o] (when str-rep-fn (str-rep-fn o)))
+       (getVerboseHandler [_] (when verbose-handler-fn (verbose-handler-fn))))))
+
 ;; =============================================================================
 ;; Constructors & Predicates
 
-(defn tagged
+(defn tagged-value
   "Construct a tagged value. tag must be a string and rep can
    be any transit encodeable value."
   [tag rep]
   (ty/taggedValue tag rep))
 
-(defn tagged?
+(defn tagged-value?
   "Returns true if x is a transit tagged value, false otherwise."
   [x]
   (ty/isTaggedValue x))
