@@ -85,6 +85,7 @@ Abbreviations:
 |set|cc.ISet|cc.ISet|
 |map|cc.IMap|cc.IMap|
 |link|cct.Link|cct.Link|
+|cmap|cct.IMap|cct.IMap|
 
 ## Contributing 
 
