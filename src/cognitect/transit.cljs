@@ -80,7 +80,12 @@
               #js {"$" (fn [v] (symbol v))
                    ":" (fn [v] (keyword v))
                    "set" (fn [v] (into #{} v))
-                   "list" (fn [v] (into () (.reverse v)))}
+                   "list" (fn [v] (into () (.reverse v)))
+                   "cmap" (fn [v] 
+                            (loop [i 0 ret (transient {})]
+                              (if (< i (alength v))
+                                (recur (+ i 2) (assoc! ret (aget v i) (aget v (inc i))))
+                                (persistent! ret))))}
               :mapBuilder (MapBuilder.)
               :arrayBuilder (VectorBuilder.)
               :prefersStrings false}

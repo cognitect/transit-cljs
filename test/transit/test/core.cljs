@@ -71,11 +71,20 @@
 ;; (assert (= (roundtrip "[\"^ \",\"~:key0000\",0,\"~:key0001\",1,\"~:key0002\",2,\"~:key0003\",3,\"~:key0004\",4,\"~:key0005\",5,\"~:key0006\",6,\"~:key0007\",7,\"~:key0008\",8,\"~:key0009\",9]")
 ;;                       "[\"^ \",\"~:key0000\",0,\"~:key0001\",1,\"~:key0002\",2,\"~:key0003\",3,\"~:key0004\",4,\"~:key0005\",5,\"~:key0006\",6,\"~:key0007\",7,\"~:key0008\",8,\"~:key0009\",9]"))
 
+;; cmap
+(def cmap
+  (->> {[] 42}
+    (t/write (t/writer :json))
+    (t/read (t/reader :json))))
+
+(assert (satisfies? cljs.core/IMap cmap))
+(assert (= cmap {[] 42}))
+
 (println "----------")
 (println "constructor & predicates API")
 
 (def p0 (t/read r "{\"~#point\":[1.5,2.5]}"))
-(assert (t/tagged? p0))
+(assert (t/tagged-value? p0))
 (def p1 (t/read r "{\"~#point\":[1.5,2.5]}"))
 (assert (= p0 p1))
 (def m0 {p0 :foo})
