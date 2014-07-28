@@ -3,9 +3,9 @@
   <groupId>com.cognitect</groupId>
   <artifactId>transit-cljs</artifactId>
   <packaging>jar</packaging>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>dev</version>
   <name>transit-cljs</name>
-  <description>transit-js bindings for ClojureScript</description>
+  <description>transit-cljs bindings for ClojureScript</description>
   <url>http://github.com/cognitect/transit-cljs</url>
   <licenses>
     <license>
@@ -131,7 +131,7 @@
     <dependency>
       <groupId>com.cognitect</groupId>
       <artifactId>transit-js</artifactId>
-      <version>0.8.645</version>
+      <version>0.8.649</version>
     </dependency>
     <dependency>
       <groupId>org.clojure</groupId>
