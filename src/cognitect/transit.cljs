@@ -40,11 +40,11 @@
     (eq/hashCode this))
 
   ty/UUID
-  (-has [this]
+  (-hash [this]
     (eq/hashCode this))
 
   ty/TaggedValue
-  (-has [this]
+  (-hash [this]
     (eq/hashCode this)))
 
 (defn opts-merge [a b]
