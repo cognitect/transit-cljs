@@ -55,17 +55,17 @@
 
 (deftype MapBuilder []
   Object
-  (init [_] (transient {}))
-  (add [_ m k v] (assoc! m k v))
-  (finalize [_ m] (persistent! m))
-  (fromArray [_ arr] (cljs.core/PersistentArrayMap.fromArray arr true true)))
+  (init [_ node] (transient {}))
+  (add [_ m k v node] (assoc! m k v))
+  (finalize [_ m node] (persistent! m))
+  (fromArray [_ arr node] (cljs.core/PersistentArrayMap.fromArray arr true true)))
 
 (deftype VectorBuilder []
   Object
-  (init [_] (transient []))
-  (add [_ v x] (conj! v x))
-  (finalize [_ v] (persistent! v))
-  (fromArray [_ arr] (cljs.core/PersistentVector.fromArray arr true)))
+  (init [_ node] (transient []))
+  (add [_ v x node] (conj! v x))
+  (finalize [_ v node] (persistent! v))
+  (fromArray [_ arr node] (cljs.core/PersistentVector.fromArray arr true)))
 
 (defn reader
   "Return a transit reader. type may be either :json or :json-verbose.
