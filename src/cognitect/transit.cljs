@@ -19,8 +19,6 @@
             [com.cognitect.transit.eq :as eq])
   (:import [goog.math Long]))
 
-(enable-console-print!)
-
 (extend-protocol IEquiv
   Long
   (-equiv [this other]
@@ -47,20 +45,20 @@
   (-hash [this]
     (eq/hashCode this)))
 
-(defn opts-merge [a b]
+(defn ^:no-doc opts-merge [a b]
   (doseq [k (js-keys b)]
     (let [v (aget b k)]
       (aset a k v)))
   a)
 
-(deftype MapBuilder []
+(deftype ^:no-doc MapBuilder []
   Object
   (init [_ node] (transient {}))
   (add [_ m k v node] (assoc! m k v))
   (finalize [_ m node] (persistent! m))
   (fromArray [_ arr node] (cljs.core/PersistentArrayMap.fromArray arr true true)))
 
-(deftype VectorBuilder []
+(deftype ^:no-doc VectorBuilder []
   Object
   (init [_ node] (transient []))
   (add [_ v x node] (conj! v x))
@@ -97,19 +95,19 @@
   [r str]
   (.read r str))
 
-(deftype KeywordHandler []
+(deftype ^:no-doc KeywordHandler []
   Object
   (tag [_ v] ":")
   (rep [_ v] (.-fqn v))
   (stringRep [_ v] (.-fqn v)))
 
-(deftype SymbolHandler []
+(deftype ^:no-doc SymbolHandler []
   Object
   (tag [_ v] "$")
   (rep [_ v] (.-str v))
   (stringRep [_ v] (.-str v)))
 
-(deftype ListHandler []
+(deftype ^:no-doc ListHandler []
   Object
   (tag [_ v] "list")
   (rep [_ v]
@@ -118,13 +116,13 @@
       (t/tagged "array" ret)))
   (stringRep [_ v] nil))
 
-(deftype MapHandler []
+(deftype ^:no-doc MapHandler []
   Object
   (tag [_ v] "map")
   (rep [_ v] v)
   (stringRep [_ v] nil))
 
-(deftype SetHandler []
+(deftype ^:no-doc SetHandler []
   Object
   (tag [_ v] "set")
   (rep [_ v]
@@ -133,7 +131,7 @@
       (t/tagged "array" ret)))
   (stringRep [v] nil))
 
-(deftype VectorHandler []
+(deftype ^:no-doc VectorHandler []
   Object
   (tag [_ v] "array")
   (rep [_ v]
