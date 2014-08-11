@@ -126,7 +126,7 @@
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>clojurescript</artifactId>
-      <version>0.0-2307</version>
+      <version>0.0-2311</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
