@@ -105,4 +105,30 @@
 (assert (= (t/read (t/reader :json {:handlers {"custom" (fn [x] x)}}) "[\"~:foo\", 1]")
            [:foo 1]))
 
+(defrecord Point [x y])
+
+(deftype PointHandler []
+  Object
+  (tag [_ v] "point")
+  (rep [_ v] #js [(.-x v) (.-y v)])
+  (stringRep [_ v] nil))
+
+(def cr (t/reader :json
+          {:handlers
+           {"custom" (fn [x] x)
+            "point" (fn [[x y]] (Point. x y))}}))
+
+(assert (= (t/read cr "[\"~#point\",[1.5,2.5]]")
+           (Point. 1.5 2.5)))
+
+(assert (= (t/read cr "[\"~:foo\", 1]")
+           [:foo 1]))
+
+(def cw (t/writer :json
+          {:handlers
+           {Point (PointHandler.)}}))
+
+(assert (= (t/write cw (Point. 1.5 2.5))
+           "[\"~#point\",[1.5,2.5]]"))
+
 (println "ok")
