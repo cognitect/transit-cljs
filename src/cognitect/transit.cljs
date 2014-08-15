@@ -75,19 +75,23 @@
      (t/reader (name type)
        (opts-merge
          #js {:handlers
-              #js {"$" (fn [v] (symbol v))
+              (clj->js
+                (merge
+                  {"$" (fn [v] (symbol v))
                    ":" (fn [v] (keyword v))
                    "set" (fn [v] (into #{} v))
                    "list" (fn [v] (into () (.reverse v)))
                    "cmap" (fn [v] 
                             (loop [i 0 ret (transient {})]
                               (if (< i (alength v))
-                                (recur (+ i 2) (assoc! ret (aget v i) (aget v (inc i))))
+                                (recur (+ i 2)
+                                  (assoc! ret (aget v i) (aget v (inc i))))
                                 (persistent! ret))))}
+                  (:handers opts)))
               :mapBuilder (MapBuilder.)
               :arrayBuilder (VectorBuilder.)
               :prefersStrings false}
-         (clj->js opts)))))
+         (clj->js (dissoc opts :handlers))))))
 
 (defn read
   "Read a transit encoded string into ClojureScript values given a 

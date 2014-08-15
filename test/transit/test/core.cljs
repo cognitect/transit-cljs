@@ -101,4 +101,8 @@
 (def m2 {l0 :baz})
 (assert (= (get m2 l0) :baz))
 
+;; TCLJS-3
+(assert (= (t/read (t/reader :json {:handlers {"custom" (fn [x] x)}}) "[\"~:foo\", 1]")
+           [:foo 1]))
+
 (println "ok")
