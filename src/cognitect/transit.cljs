@@ -87,7 +87,7 @@
                                 (recur (+ i 2)
                                   (assoc! ret (aget v i) (aget v (inc i))))
                                 (persistent! ret))))}
-                  (:handers opts)))
+                  (:handlers opts)))
               :mapBuilder (MapBuilder.)
               :arrayBuilder (VectorBuilder.)
               :prefersStrings false}
