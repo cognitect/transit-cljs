@@ -19,6 +19,20 @@
             [com.cognitect.transit.eq :as eq])
   (:import [goog.math Long]))
 
+;; patch cljs.core/UUID IEquiv
+
+(extend-type UUID
+  IEquiv
+  (-equiv [this other]
+    (cond
+      (instance? UUID other)
+      (identical? (.-uuid this) (.-uuid other))
+
+      (instance? ty/UUID other)
+      (identical? (.-uuid this) (.toString other))
+
+      :else false)))
+
 (extend-protocol IEquiv
   Long
   (-equiv [this other]
@@ -26,7 +40,9 @@
   
   ty/UUID
   (-equiv [this other]
-    (.equiv this other))
+    (if (instance? UUID other)
+      (-equiv other this)
+      (.equiv this other)))
 
   ty/TaggedValue
   (-equiv [this other]
@@ -144,6 +160,12 @@
       ret))
   (stringRep [_ v] nil))
 
+(deftype ^:no-doc UUIDHandler []
+  Object
+  (tag [_ v] "u")
+  (rep [_ v] (.-uuid v))
+  (stringRep [this v] (.rep this v)))
+
 (defn writer
   "Return a transit writer. type maybe either :json or :json-verbose.
    opts is a map containing a :handlers entry. :handlers is a JavaScript
@@ -157,6 +179,7 @@
            map-handler     (MapHandler.)
            set-handler     (SetHandler.)
            vector-handler  (VectorHandler.)
+           uuid-handler    (UUIDHandler.)
            handlers
            (merge
              {cljs.core/Keyword               keyword-handler
@@ -184,7 +207,8 @@
               cljs.core/PersistentHashSet     set-handler
               cljs.core/PersistentTreeSet     set-handler
               cljs.core/PersistentVector      vector-handler
-              cljs.core/Subvec                vector-handler}
+              cljs.core/Subvec                vector-handler
+              cljs.core/UUID                  uuid-handler}
              (:handlers opts))]
       (t/writer (name type)
         (opts-merge
