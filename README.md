@@ -16,7 +16,7 @@ specification is complete._
 
 ## Releases and Dependency Information
 
-* Latest release: 0.8.184
+* Latest release: 0.8.186
 * [All Released Versions](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.cognitect%22%20AND%20a%3A%22transit-cljs%22)
 
 ### Leiningen
@@ -24,7 +24,7 @@ specification is complete._
 Add the following to your `project.clj` `:dependencies`:
 
 ```
-[com.cognitect/transit-cljs "0.8.184"]
+[com.cognitect/transit-cljs "0.8.186"]
 ```
 
 ### Maven
@@ -35,7 +35,7 @@ Add the following to your `project.clj` `:dependencies`:
 <dependency>
   <groupId>com.cognitect</groupId>
   <artifactId>transit-cljs</artifactId>
-  <version>0.8.184</version>
+  <version>0.8.186</version>
 </dependency>
 ```
 
