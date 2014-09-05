@@ -3,8 +3,8 @@
   :url "http://github.com/cognitect/transit-cljs"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2311" :scope "provided"]
-                 [com.cognitect/transit-js "0.8.717"]]
+                 [org.clojure/clojurescript "0.0-2322" :scope "provided"]
+                 [com.cognitect/transit-js "0.8.723"]]
 
   :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]
             [codox "0.8.9"]]

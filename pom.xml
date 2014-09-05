@@ -126,13 +126,13 @@
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>clojurescript</artifactId>
-      <version>0.0-2311</version>
+      <version>0.0-2322</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.cognitect</groupId>
       <artifactId>transit-js</artifactId>
-      <version>0.8.717</version>
+      <version>0.8.723</version>
     </dependency>
     <dependency>
       <groupId>org.clojure</groupId>
