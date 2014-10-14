@@ -252,7 +252,8 @@
   ([tag-fn rep-fn str-rep-fn]
      (write-handler tag-fn rep-fn str-rep-fn nil))
   ([tag-fn rep-fn str-rep-fn verbose-handler-fn]
-     (reify Object
+     (reify
+       Object
        (tag [_ o] (tag-fn o))
        (rep [_ o] (rep-fn o))
        (stringRep [_ o] (when str-rep-fn (str-rep-fn o)))

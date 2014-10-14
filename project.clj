@@ -1,9 +1,9 @@
-(defproject com.cognitect/transit-cljs "0.1.0-SNAPSHOT"
+(defproject com.cognitect/transit-cljs "0.8.188"
   :description "transit-js bindings for ClojureScript"
   :url "http://github.com/cognitect/transit-cljs"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2322" :scope "provided"]
+                 [org.clojure/clojurescript "0.0-2371" :scope "provided"]
                  [com.cognitect/transit-js "0.8.723"]]
 
   :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]
