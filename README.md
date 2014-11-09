@@ -41,7 +41,7 @@ Add the following to your `project.clj` `:dependencies`:
 
 ## Usage
 
-```clojurescript
+```clojure
 (ns example
   (:require [cognitect.transit :as t]))
 
