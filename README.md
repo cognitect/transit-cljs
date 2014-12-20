@@ -5,6 +5,7 @@ Transit is a data format and a set of libraries for conveying values between app
 * [Rationale](http://blog.cognitect.com/blog/2014/7/22/transit)
 * [API docs](http://cognitect.github.io/transit-cljs/)
 * [Specification](http://github.com/cognitect/transit-format)
+* [Getting Started](http://github.com/cognitect/transit-cljs/wiki/Getting-Started)
 
 This implementation's major.minor version number corresponds to the version of the Transit specification it supports.
 
