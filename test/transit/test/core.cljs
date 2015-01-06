@@ -140,4 +140,9 @@
 (assert (= (t/write w #uuid "550e8400-e29b-41d4-a716-446655440000")
            "[\"~#'\",\"~u550e8400-e29b-41d4-a716-446655440000\"]"))
 
+;; Transit UUID printing
+
+(assert (= (pr-str (t/read r "{\"~#'\":\"~u550e8400-e29b-41d4-a716-446655440000\"}"))
+           (pr-str #uuid "550e8400-e29b-41d4-a716-446655440000")))
+
 (println "ok")

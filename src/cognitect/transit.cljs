@@ -61,6 +61,11 @@
   (-hash [this]
     (eq/hashCode this)))
 
+(extend-type ty/UUID
+  IPrintWithWriter
+  (-pr-writer [uuid writer _]
+    (-write writer (str "#uuid \"" (.toString uuid) "\""))))
+
 (defn ^:no-doc opts-merge [a b]
   (doseq [k (js-keys b)]
     (let [v (aget b k)]
