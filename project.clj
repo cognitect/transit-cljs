@@ -1,12 +1,12 @@
-(defproject com.cognitect/transit-cljs "0.8.199"
+(defproject com.cognitect/transit-cljs "0.8.202"
   :description "transit-js bindings for ClojureScript"
   :url "http://github.com/cognitect/transit-cljs"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2371" :scope "provided"]
-                 [com.cognitect/transit-js "0.8.751"]]
+                 [org.clojure/clojurescript "0.0-2665" :scope "provided"]
+                 [com.cognitect/transit-js "0.8.755"]]
 
-  :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]
+  :plugins [[lein-cljsbuild "1.0.4"]
             [codox "0.8.9"]]
 
   :scm {:connection "scm:git:git@github.com:cognitect/transit-cljs.git"
@@ -22,6 +22,8 @@
             :distribution :repo}
 
   :source-paths ["src"]
+
+  :clean-targets ["target"]
 
   :cljsbuild { 
     :builds [{:id "dev"
@@ -39,12 +41,14 @@
                 :optimizations :none
                 :source-map true}}
              {:id "test"
-              :source-paths ["src" "test/transit/test"] 
+              :source-paths ["src" "test/transit/test"]
+              :notify-command ["node" "target/transit.test.js"]
               :compiler {
                 :output-to "target/transit.test.js"
                 :output-dir "target/out-test"
                 :optimizations :advanced
-                :pretty-print false}}
+                :pretty-print false
+                :target :nodejs}}
              {:id "roundtrip"
               :source-paths ["src" "test/transit/roundtrip"] 
               :compiler {
