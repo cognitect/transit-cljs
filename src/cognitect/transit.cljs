@@ -291,12 +291,12 @@
   (ty/isInteger x))
 
 (defn bigint
-  "Construct a big decimal from a string."
+  "Construct a big integer from a string."
   [s]
   (ty/bigInteger s))
 
 (defn bigint?
-  "Returns true if x is a transit big decimal value, false otherwise."
+  "Returns true if x is a transit big integer value, false otherwise."
   [x]
   (ty/isBigInteger x))
 
