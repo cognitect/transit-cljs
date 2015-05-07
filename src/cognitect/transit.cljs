@@ -48,6 +48,11 @@
   (-equiv [this other]
     (.equiv this other)))
 
+(extend-type ty/UUID
+  IPrintWithWriter
+  (-pr-writer [uuid writer _]
+    (-write writer (str "#uuid \"" (.toString uuid) "\""))))
+
 (extend-protocol IHash
   Long
   (-hash [this]
@@ -55,16 +60,12 @@
 
   ty/UUID
   (-hash [this]
-    (eq/hashCode this))
+    (eq/hashCode (pr-str this)))
 
   ty/TaggedValue
   (-hash [this]
     (eq/hashCode this)))
 
-(extend-type ty/UUID
-  IPrintWithWriter
-  (-pr-writer [uuid writer _]
-    (-write writer (str "#uuid \"" (.toString uuid) "\""))))
 
 (defn ^:no-doc opts-merge [a b]
   (doseq [k (js-keys b)]
