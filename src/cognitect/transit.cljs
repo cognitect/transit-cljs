@@ -16,8 +16,7 @@
   (:refer-clojure :exclude [integer?])
   (:require [com.cognitect.transit :as t]
             [com.cognitect.transit.types :as ty]
-            [com.cognitect.transit.eq :as eq]
-            [goog.array :as garray])
+            [com.cognitect.transit.eq :as eq])
   (:import [goog.math Long]))
 
 ;; patch cljs.core/UUID IEquiv
