@@ -16,7 +16,8 @@
   (:refer-clojure :exclude [integer?])
   (:require [com.cognitect.transit :as t]
             [com.cognitect.transit.types :as ty]
-            [com.cognitect.transit.eq :as eq])
+            [com.cognitect.transit.eq :as eq]
+            [goog.array :as garray])
   (:import [goog.math Long]))
 
 ;; patch cljs.core/UUID IEquiv
@@ -32,6 +33,20 @@
       (identical? (.-uuid this) (.toString other))
 
       :else false)))
+
+(extend-protocol IComparable
+  UUID
+  (-compare [this other]
+    (if (or (instance? UUID other)
+            (instance? ty/UUID other))
+      (compare (.toString this) (.toString other))
+      -1))
+  ty/UUID
+  (-compare [this other]
+    (if (or (instance? UUID other)
+            (instance? ty/UUID other))
+      (compare (.toString this) (.toString other))
+      -1)))
 
 (extend-protocol IEquiv
   Long
