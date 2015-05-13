@@ -160,7 +160,7 @@
 
 ;; Test UUID comparison
 
-(deftest test-uuid-compare
+#_(deftest test-uuid-compare
   (is (zero?
         (compare (t/read r "{\"~#'\":\"~u550e8400-e29b-41d4-a716-446655440000\"}")
                  #uuid "550e8400-e29b-41d4-a716-446655440000"))))
