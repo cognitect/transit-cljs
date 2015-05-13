@@ -162,7 +162,10 @@
 
 (deftest test-uuid-compare
   (is (zero?
-        (compare (pr-str (t/read r "{\"~#'\":\"~u550e8400-e29b-41d4-a716-446655440000\"}"))
-                 (pr-str #uuid "550e8400-e29b-41d4-a716-446655440000")))))
+        (compare (t/read r "{\"~#'\":\"~u550e8400-e29b-41d4-a716-446655440000\"}")
+                 #uuid "550e8400-e29b-41d4-a716-446655440000"))))
+
+(deftest test-integer
+  (is (= (t/integer "30") 30)))
 
 (set! *main-cli-fn* -main)

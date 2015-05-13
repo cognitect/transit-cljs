@@ -296,7 +296,7 @@
   in the 53bit integer range, a goog.math.Long instance if above. s
   may be a string or a JavaScript number."
   [s]
-  (ty/integer s))
+  (ty/intValue s))
 
 (defn integer?
   "Returns true if x is an integer value between the 53bit and 64bit
