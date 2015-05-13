@@ -112,12 +112,17 @@ lein cljsbuild once test
 open index.html
 ```
 
-In order to run the `bin/verify` tests you must first build the
-roundtrip file:
+In order to run the [transit-format](https://github.com/cognitect/transit-format) 
+`bin/verify` you must first clone transit-format into the same parent directory 
+as your transit-cljs checkout and build the roundtrip file:
 
 ```
 lein cljsbuild once roundtrip
 ```
+
+To run the benchmarks you must first clone 
+[transit-format](https://github.com/cognitect/transit-format) into the same
+parent directory as your transit-cljs checkout. 
 
 Running the benchmarks:
 
