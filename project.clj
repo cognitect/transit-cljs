@@ -4,9 +4,9 @@
 
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2665" :scope "provided"]
-                 [com.cognitect/transit-js "0.8.783"]]
+                 [com.cognitect/transit-js "0.8.795"]]
 
-  :plugins [[lein-cljsbuild "1.0.4"]
+  :plugins [[lein-cljsbuild "1.0.5"]
             [codox "0.8.9"]]
 
   :scm {:connection "scm:git:git@github.com:cognitect/transit-cljs.git"
