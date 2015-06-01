@@ -109,7 +109,6 @@ Running the tests:
 
 ```
 lein cljsbuild once test
-open index.html
 ```
 
 In order to run the [transit-format](https://github.com/cognitect/transit-format) 

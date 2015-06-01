@@ -39,13 +39,13 @@
     (if (or (instance? UUID other)
             (instance? ty/UUID other))
       (compare (.toString this) (.toString other))
-      -1))
+      (throw (js/Error. (str "Cannot compare " this " to " other)))))
   ty/UUID
   (-compare [this other]
     (if (or (instance? UUID other)
             (instance? ty/UUID other))
       (compare (.toString this) (.toString other))
-      -1)))
+      (throw (js/Error. (str "Cannot compare " this " to " other))))))
 
 (extend-protocol IEquiv
   Long
