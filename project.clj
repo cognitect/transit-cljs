@@ -2,8 +2,8 @@
   :description "transit-js bindings for ClojureScript"
   :url "http://github.com/cognitect/transit-cljs"
 
-  :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-3291" :scope "provided"]
+  :dependencies [[org.clojure/clojure "1.7.0" :scope "provided"]
+                 [org.clojure/clojurescript "1.7.48" :scope "provided"]
                  [com.cognitect/transit-js "0.8.795"]]
 
   :plugins [[lein-cljsbuild "1.0.5"]
