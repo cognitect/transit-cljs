@@ -342,7 +342,7 @@
 (defn uuid?
   "Returns true if x is a transit UUID value, false otherwise."
   [x]
-  (ty/isUUID x))
+  (or (ty/isUUID x) (instance? UUID x)))
 
 (defn binary
   "Construct a transit binary value. s should be base64 encoded
