@@ -83,6 +83,7 @@ Abbreviations:
 |uuid|cct.UUID|cct.UUID|
 |char|String|String|
 |array|cc.IVector|cc.IVector|
+|list|cc.IList|cc.IList|
 |set|cc.ISet|cc.ISet|
 |map|cc.IMap|cc.IMap|
 |link|cct.Link|cct.Link|
