@@ -3,7 +3,7 @@
 Transit is a data format and a set of libraries for conveying values between
 applications written in different languages. This library provides support for
 marshalling Transit data to/from ClojureScript. Unlike the Java and Clojure
-implementations it relies on the non-streaming JSON parsing mechanism of the 
+implementations it relies on the non-streaming JSON parsing mechanism of the
 host JavaScript environment.
 
 * [Rationale](http://blog.cognitect.com/blog/2014/7/22/transit)
