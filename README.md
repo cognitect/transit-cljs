@@ -1,13 +1,18 @@
 # transit-cljs
 
-Transit is a data format and a set of libraries for conveying values between applications written in different languages. This library provides support for marshalling Transit data to/from ClojureScript.
+Transit is a data format and a set of libraries for conveying values between
+applications written in different languages. This library provides support for
+marshalling Transit data to/from ClojureScript. Unlike the Java and Clojure
+implementations it relies on the non-streaming JSON parsing mechanism of the 
+host JavaScript environment.
 
 * [Rationale](http://blog.cognitect.com/blog/2014/7/22/transit)
 * [API docs](http://cognitect.github.io/transit-cljs/)
 * [Specification](http://github.com/cognitect/transit-format)
 * [Getting Started](http://github.com/cognitect/transit-cljs/wiki/Getting-Started)
 
-This implementation's major.minor version number corresponds to the version of the Transit specification it supports.
+This implementation's major.minor version number corresponds to the version of
+the Transit specification it supports.
 
 _NOTE: Transit is a work in progress and may evolve based on feedback.
 As a result, while Transit is a great option for transferring data
@@ -91,8 +96,14 @@ Abbreviations:
 
 ## Contributing 
 
-This library is open source, developed internally by Cognitect. We welcome discussions of potential problems and enhancement suggestions on the [transit-format mailing list](https://groups.google.com/forum/#!forum/transit-format). Issues can be filed using GitHub [issues](https://github.com/cognitect/transit-cljs/issues) for this project. Because transit is incorporated into products and client projects, we prefer to do development internally and are not accepting pull requests or patches.
-
+This library is open source, developed internally by Cognitect. We welcome
+discussions of potential problems and enhancement suggestions on the
+[transit-format mailing
+list](https://groups.google.com/forum/#!forum/transit-format). Issues can be
+filed using GitHub [issues](https://github.com/cognitect/transit-cljs/issues)
+for this project. Because transit is incorporated into products and client
+projects, we prefer to do development internally and are not accepting pull
+requests or patches.
 
 ## Development
 
