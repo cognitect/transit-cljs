@@ -4,7 +4,7 @@ set -e
 
 echo -e "Building docs\n"
 rm -rf doc
-lein doc
+lein codox 
 echo -e "Built docs at doc/\n"
 
 echo -e "Checking out gh-pages branch\n"

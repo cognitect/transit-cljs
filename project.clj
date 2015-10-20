@@ -7,7 +7,7 @@
                  [com.cognitect/transit-js "0.8.831"]]
 
   :plugins [[lein-cljsbuild "1.0.5"]
-            [codox "0.8.9"]]
+            [lein-codox "0.9.0"]]
 
   :scm {:connection "scm:git:git@github.com:cognitect/transit-cljs.git"
         :developerConnection "scm:git:git@github.com:cognitect/transit-cljs.git"
@@ -73,7 +73,6 @@
                 :pretty-print false}}]}
 
   :codox {:language :clojurescript
-          :output-dir "doc"
-          :src-dir-uri "http://github.com/cognitect/transit-cljs/blob/master/"
-          :src-linenum-anchor-prefix "L"}
+          :output-path "doc"
+          :source-uri "https://github.com/cognitect/transit-cljs/blob/master/{filepath}#L{line}"}
 )
