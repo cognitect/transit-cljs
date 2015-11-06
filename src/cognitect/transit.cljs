@@ -69,7 +69,7 @@
 
   ty/UUID
   (-hash [this]
-    (eq/hashCode this))
+    (hash (.toString this)))
 
   ty/TaggedValue
   (-hash [this]
