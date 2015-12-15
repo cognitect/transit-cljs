@@ -3,10 +3,10 @@
   :url "http://github.com/cognitect/transit-cljs"
 
   :dependencies [[org.clojure/clojure "1.7.0" :scope "provided"]
-                 [org.clojure/clojurescript "1.7.107" :scope "provided"]
+                 [org.clojure/clojurescript "1.7.170" :scope "provided"]
                  [com.cognitect/transit-js "0.8.831"]]
 
-  :plugins [[lein-cljsbuild "1.0.5"]
+  :plugins [[lein-cljsbuild "1.1.1"]
             [lein-codox "0.9.0"]]
 
   :scm {:connection "scm:git:git@github.com:cognitect/transit-cljs.git"
