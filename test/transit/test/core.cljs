@@ -170,4 +170,15 @@
 (deftest test-integer
   (is (= (t/integer "30") 30)))
 
+;; TCLJS-22
+
+(def pathological
+  [{:any-value {["this vector makes this a cmap"] "any value"
+                "any string" :victim}}
+   {:victim :any-other-value}])
+
+(comment
+  (t/write (t/writer :json) pathological)
+  )
+
 (set! *main-cli-fn* -main)
