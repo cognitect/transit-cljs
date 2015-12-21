@@ -4,7 +4,7 @@
 
   :dependencies [[org.clojure/clojure "1.7.0" :scope "provided"]
                  [org.clojure/clojurescript "1.7.170" :scope "provided"]
-                 [com.cognitect/transit-js "0.8.831"]]
+                 [com.cognitect/transit-js "0.8.846"]]
 
   :plugins [[lein-cljsbuild "1.1.1"]
             [lein-codox "0.9.0"]]

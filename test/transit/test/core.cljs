@@ -172,13 +172,12 @@
 
 ;; TCLJS-22
 
-(def pathological
-  [{:any-value {["this vector makes this a cmap"] "any value"
-                "any string" :victim}}
-   {:victim :any-other-value}])
-
-(comment
-  (t/write (t/writer :json) pathological)
-  )
+(deftest test-tcljs-22
+  (let [w (t/writer :json)
+        r (t/reader :json)
+        pathological [{:any-value {["this vector makes this a cmap"] "any value" "any string" :victim}}
+                      {:victim :any-other-value}]]
+    (is (= pathological
+           (t/read r (t/write w pathological))))))
 
 (set! *main-cli-fn* -main)
