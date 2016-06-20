@@ -181,3 +181,9 @@
            (t/read r (t/write w pathological))))))
 
 (set! *main-cli-fn* -main)
+
+(comment
+
+  (run-tests)
+
+  )
