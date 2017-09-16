@@ -157,6 +157,14 @@
   (is (= (pr-str (t/read r "{\"~#'\":\"~u550e8400-e29b-41d4-a716-446655440000\"}"))
          (pr-str #uuid "550e8400-e29b-41d4-a716-446655440000"))))
 
+;; Test maps with floats as keys
+
+(deftest test-map-float-keys
+  (let [w (t/writer :json)
+        r (t/reader :json)
+        m {1.5 1}]
+    (is (= m (t/read r (t/write w m))))))
+
 (defn -main [& args]
   (run-tests))
 
