@@ -13,7 +13,7 @@
 ;; limitations under the License.
 
 (ns cognitect.transit
-  (:refer-clojure :exclude [integer? uuid uuid?])
+  (:refer-clojure :exclude [integer? uuid uuid? uri?])
   (:require [com.cognitect.transit :as t]
             [com.cognitect.transit.types :as ty]
             [com.cognitect.transit.eq :as eq])
