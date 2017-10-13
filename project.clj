@@ -1,4 +1,4 @@
-(defproject com.cognitect/transit-cljs "0.8.225"
+(defproject com.cognitect/transit-cljs "0.8.243"
   :description "transit-js bindings for ClojureScript"
   :url "http://github.com/cognitect/transit-cljs"
 
