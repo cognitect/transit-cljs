@@ -6,7 +6,7 @@
                  [org.clojure/clojurescript "1.7.170" :scope "provided"]
                  [com.cognitect/transit-js "0.8.846"]]
 
-  :plugins [[lein-cljsbuild "1.1.1"]
+  :plugins [[lein-cljsbuild "1.1.7"]
             [lein-codox "0.9.0"]]
 
   :scm {:connection "scm:git:git@github.com:cognitect/transit-cljs.git"
