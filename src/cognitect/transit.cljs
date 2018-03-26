@@ -1,4 +1,4 @@
-;; Copyright 2014 Cognitect. All Rights Reserved.
+;; Copyright 2014-2018 Cognitect. All Rights Reserved.
 ;;
 ;; Licensed under the Apache License, Version 2.0 (the "License");
 ;; you may not use this file except in compliance with the License.
@@ -227,6 +227,10 @@
               cljs.core/PersistentVector      vector-handler
               cljs.core/Subvec                vector-handler
               cljs.core/UUID                  uuid-handler}
+             (when (exists? cljs.core/Eduction)
+               {cljs.core/Eduction list-handler})
+             (when (exists? cljs.core/Repeat)
+               {cljs.core/Repeat list-handler})
              (:handlers opts))]
       (t/writer (name type)
         (opts-merge

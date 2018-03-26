@@ -180,6 +180,18 @@
     (is (= pathological
            (t/read r (t/write w pathological))))))
 
+(deftest test-tcljs-44
+  (let [w  (t/writer :json)
+        r  (t/reader :json)
+        xs (eduction (take 3) (range))]
+    (is (= (seq xs) (t/read r (t/write w xs))))))
+
+(deftest test-tcljs-45
+  (let [w  (t/writer :json)
+        r  (t/reader :json)
+        xs (repeat 3 :hi)]
+    (is (= xs (t/read r (t/write w xs))))))
+
 (set! *main-cli-fn* -main)
 
 (comment
