@@ -231,6 +231,8 @@
                {cljs.core/Eduction list-handler})
              (when (exists? cljs.core/Repeat)
                {cljs.core/Repeat list-handler})
+             (when (exists? cljs.core/MapEntry)
+               {cljs.core/MapEntry vector-handler})
              (:handlers opts))]
       (t/writer (name type)
         (opts-merge

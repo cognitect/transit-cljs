@@ -180,6 +180,12 @@
     (is (= pathological
            (t/read r (t/write w pathological))))))
 
+(deftest test-tcljs-33
+  (let [w  (t/writer :json)
+        r  (t/reader :json)
+        me (first {:foo 1})]
+    (is (= [:foo 1] (t/read r (t/write w me))))))
+
 (deftest test-tcljs-44
   (let [w  (t/writer :json)
         r  (t/reader :json)
