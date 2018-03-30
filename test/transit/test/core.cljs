@@ -198,6 +198,17 @@
         xs (repeat 3 :hi)]
     (is (= xs (t/read r (t/write w xs))))))
 
+(deftest test-meta
+  (let [mw  (t/writer :json {:transform t/write-meta})
+        xs  (with-meta [1 2 3] {:text "cool!"})
+        xs' (t/read r (t/write mw xs))
+        m   {:baz xs}
+        m'  (t/read r (t/write mw m))]
+    (is (= [1 2 3] xs'))
+    (is (= {:text "cool!"} (meta xs')))
+    (is (= {:baz [1 2 3]} m'))
+    (is (= {:text "cool!"} (-> m' :baz meta)))))
+
 (set! *main-cli-fn* -main)
 
 (comment
