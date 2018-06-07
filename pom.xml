@@ -133,7 +133,7 @@
         <dependency>
             <groupId>com.cognitect</groupId>
             <artifactId>transit-js</artifactId>
-            <version>0.8.846</version>
+            <version>0.8.861</version>
         </dependency>
     </dependencies>
     <developers>
