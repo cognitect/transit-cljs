@@ -209,6 +209,21 @@
     (is (= {:baz [1 2 3]} m'))
     (is (= {:text "cool!"} (-> m' :baz meta)))))
 
+(deftype DefaultHandler []
+  Object
+  (tag [_ v] "unknown")
+  (rep [_ v] (when v (.toString v))))
+
+(deftest test-default-writer
+  (let [w (t/writer :json {:handlers {:default (DefaultHandler.)}})]
+    (is (= (t/write w (Point. 1 2)) "[\"~#unknown\",\"[object Object]\"]"))))
+
+(deftest test-default-reader
+  (let [r (t/reader :json
+            {:handlers
+             {:default (fn [tag value] (t/tagged-value tag value))}})]
+    (is (t/tagged-value? (first (t/read r "[\"~q1\"]"))))))
+
 (set! *main-cli-fn* -main)
 
 (comment

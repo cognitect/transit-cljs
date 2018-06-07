@@ -103,8 +103,10 @@
 (defn reader
   "Return a transit reader. type may be either :json or :json-verbose.
    opts may be a map optionally containing a :handlers entry. The value
-   of :handlers should be map from tag to a decoder function which returns
-   then in-memory representation of the semantic transit value."
+   of :handlers should be map from string tag to a decoder function of one
+   argument which returns the in-memory representation of the semantic transit
+   value. If a :default handler is provided, it will be used when no matching
+   read handler can be found."
   ([type] (reader type nil))
   ([type opts]
      (t/reader (name type)
@@ -116,7 +118,7 @@
                    ":"    (fn [v] (keyword v))
                    "set"  (fn [v] (into #{} v))
                    "list" (fn [v] (into () (.reverse v)))
-                   "cmap" (fn [v] 
+                   "cmap" (fn [v]
                             (loop [i 0 ret (transient {})]
                               (if (< i (alength v))
                                 (recur (+ i 2)
@@ -124,7 +126,8 @@
                                 (persistent! ret))))
                    "with-meta"
                           (fn [v] (with-meta (aget v 0) (aget v 1)))}
-                  (:handlers opts)))
+                  (dissoc (:handlers opts) :default)))
+              :defaultHandler (-> opts :handlers :default)
               :mapBuilder (MapBuilder.)
               :arrayBuilder (VectorBuilder.)
               :prefersStrings false}
@@ -200,7 +203,9 @@
   "Return a transit writer. type maybe either :json or :json-verbose.
   opts is a map with the following optional keys:
 
-    :handlers  - a map of type constructors to handler instances.
+    :handlers  - a map of type constructors to handler instances. Can optionally
+                 provide a :default write handler which will be used if no
+                 matching handler can be found.
     :transform - a function of one argument returning a transformed value. Will
                  be invoked on a value before it is written."
   ([type] (writer type nil))
@@ -263,8 +268,10 @@
                  Object
                  (forEach
                    ([coll f]
-                      (doseq [[k v] coll]
-                        (f v k)))))
+                    (doseq [[k v] coll]
+                      (if (= :default k)
+                        (f v "default")
+                        (f v k))))))
                :unpack
                (fn [x]
                  (if (instance? cljs.core/PersistentArrayMap x)
