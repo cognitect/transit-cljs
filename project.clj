@@ -7,7 +7,7 @@
                  [com.cognitect/transit-js "0.8.861"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
-            [lein-codox "0.9.0"]]
+            [lein-codox "0.10.7"]]
 
   :scm {:connection "scm:git:git@github.com:cognitect/transit-cljs.git"
         :developerConnection "scm:git:git@github.com:cognitect/transit-cljs.git"
