@@ -9,11 +9,11 @@
     <version>dev</version>
     <name>transit-cljs</name>
     <description>transit-cljs bindings for ClojureScript</description>
-    <url>http://github.com/cognitect/transit-cljs</url>
+    <url>https://github.com/cognitect/transit-cljs</url>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -104,7 +104,7 @@
     <repositories>
         <repository>
             <id>central</id>
-            <url>http://repo1.maven.org/maven2/</url>
+            <url>https://repo1.maven.org/maven2/</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -141,7 +141,7 @@
             <name>David Nolen</name>
             <email>david.nolen@cognitect.com</email>
             <organization>Cognitect</organization>
-            <organizationUrl>http://cognitect.com</organizationUrl>
+            <organizationUrl>https://cognitect.com</organizationUrl>
         </developer>
     </developers>
 </project>
