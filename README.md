@@ -6,10 +6,10 @@ marshalling Transit data to/from ClojureScript. Unlike the Java and Clojure
 implementations it relies on the non-streaming JSON parsing mechanism of the
 host JavaScript environment.
 
-* [Rationale](http://blog.cognitect.com/blog/2014/7/22/transit)
-* [API docs](http://cognitect.github.io/transit-cljs/)
-* [Specification](http://github.com/cognitect/transit-format)
-* [Getting Started](http://github.com/cognitect/transit-cljs/wiki/Getting-Started)
+* [Rationale](https://blog.cognitect.com/blog/2014/7/22/transit)
+* [API docs](https://cognitect.github.io/transit-cljs/)
+* [Specification](https://github.com/cognitect/transit-format)
+* [Getting Started](https://github.com/cognitect/transit-cljs/wiki/Getting-Started)
 
 This implementation's major.minor version number corresponds to the version of
 the Transit specification it supports.
@@ -19,7 +19,7 @@ _NOTE: Transit is intended primarily as a wire protocol for transferring data be
 ## Releases and Dependency Information
 
 * Latest release: 0.8.264
-* [All Released Versions](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.cognitect%22%20AND%20a%3A%22transit-cljs%22)
+* [All Released Versions](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.cognitect%22%20AND%20a%3A%22transit-cljs%22)
 
 ### Leiningen
 
@@ -31,7 +31,7 @@ Add the following to your `project.clj` `:dependencies`:
 
 ### Maven
 
-[Maven](http://maven.apache.org/) dependency information:
+[Maven](https://maven.apache.org/) dependency information:
 
 ```xml
 <dependency>
@@ -143,8 +143,7 @@ node target/transit.bench.js
 #### Build JAR for ClojureScript
 
 Assuming you have a
-[JDK](http://www.oracle.com/technetwork/java/javaee/downloads/java-ee-sdk-6u3-jdk-7u1-downloads-523391.html)
-and [Maven](http://maven.apache.org) installed, the following will
+JDK and [Maven](https://maven.apache.org) installed, the following will
 install a JAR suitable for use from ClojureScript into your local
 Maven repository.
 
@@ -154,13 +153,13 @@ build/package_local
 
 ## Copyright and License
 
-Copyright © 2014 Cognitect
+Copyright © 2014-2020 Cognitect
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+    https://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
