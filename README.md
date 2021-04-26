@@ -18,7 +18,7 @@ _NOTE: Transit is intended primarily as a wire protocol for transferring data be
 
 ## Releases and Dependency Information
 
-* Latest release: 0.8.264
+* Latest release: 0.8.269
 * [All Released Versions](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.cognitect%22%20AND%20a%3A%22transit-cljs%22)
 
 ### Leiningen
@@ -26,7 +26,7 @@ _NOTE: Transit is intended primarily as a wire protocol for transferring data be
 Add the following to your `project.clj` `:dependencies`:
 
 ```
-[com.cognitect/transit-cljs "0.8.264"]
+[com.cognitect/transit-cljs "0.8.269"]
 ```
 
 ### Maven
@@ -37,7 +37,7 @@ Add the following to your `project.clj` `:dependencies`:
 <dependency>
   <groupId>com.cognitect</groupId>
   <artifactId>transit-cljs</artifactId>
-  <version>0.8.264</version>
+  <version>0.8.269</version>
 </dependency>
 ```
 
