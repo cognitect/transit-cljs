@@ -1,4 +1,4 @@
-;; Copyright 2014-2018 Cognitect. All Rights Reserved.
+;; Copyright 2014-2022 Cognitect. All Rights Reserved.
 ;;
 ;; Licensed under the Apache License, Version 2.0 (the "License");
 ;; you may not use this file except in compliance with the License.
@@ -17,7 +17,8 @@
   (:require [clojure.set :as set]
             [com.cognitect.transit :as t]
             [com.cognitect.transit.types :as ty]
-            [com.cognitect.transit.eq :as eq])
+            [com.cognitect.transit.eq :as eq]
+            [goog.object :as gobj])
   (:import [goog.math Long]))
 
 ;; patch cljs.core/UUID IEquiv
@@ -83,8 +84,8 @@
 
 (defn ^:no-doc opts-merge [a b]
   (doseq [k (js-keys b)]
-    (let [v (aget b k)]
-      (aset a k v)))
+    (let [v (gobj/get b k)]
+      (gobj/set a k v)))
   a)
 
 (deftype ^:no-doc MapBuilder []
