@@ -14,7 +14,8 @@
 
 (ns cognitect.transit
   (:refer-clojure :exclude [integer? uuid uuid? uri?])
-  (:require [com.cognitect.transit :as t]
+  (:require [clojure.set :as set]
+            [com.cognitect.transit :as t]
             [com.cognitect.transit.types :as ty]
             [com.cognitect.transit.eq :as eq])
   (:import [goog.math Long]))
@@ -51,7 +52,7 @@
   Long
   (-equiv [this other]
     (.equiv this other))
-  
+
   ty/UUID
   (-equiv [this other]
     (if (instance? UUID other)
@@ -130,11 +131,18 @@
               :defaultHandler (-> opts :handlers :default)
               :mapBuilder (MapBuilder.)
               :arrayBuilder (VectorBuilder.)
-              :prefersStrings false}
-         (clj->js (dissoc opts :handlers))))))
+              :preferStrings false
+              :preferBuffers false}
+         (clj->js
+           (set/rename-keys
+             (dissoc opts :handlers)
+             {:array-builder  :arrayBuilder
+              :map-builder    :mapBuilder
+              :prefer-strings :preferStrings
+              :prefer-buffers :preferBuffers}))))))
 
 (defn read
-  "Read a transit encoded string into ClojureScript values given a 
+  "Read a transit encoded string into ClojureScript values given a
    transit reader."
   [r str]
   (.read r str))
