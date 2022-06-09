@@ -158,9 +158,6 @@
   (is (= (pr-str (t/read r "{\"~#'\":\"~u550e8400-e29b-41d4-a716-446655440000\"}"))
          (pr-str #uuid "550e8400-e29b-41d4-a716-446655440000"))))
 
-(defn -main [& args]
-  (run-tests))
-
 ;; Test UUID comparison
 
 (deftest test-uuid-compare
@@ -225,8 +222,10 @@
              {:default (fn [tag value] (t/tagged-value tag value))}})]
     (is (t/tagged-value? (first (t/read r "[\"~q1\"]"))))))
 
-(set! *main-cli-fn* -main)
+(defn -main [& args]
+  (run-tests))
 
+(set! *main-cli-fn* -main)
 
 (comment
 
