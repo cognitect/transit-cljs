@@ -78,6 +78,7 @@
     (eq/hashCode this)))
 
 (extend-type ty/UUID
+  IUUID
   IPrintWithWriter
   (-pr-writer [uuid writer _]
     (-write writer (str "#uuid \"" (.toString uuid) "\""))))

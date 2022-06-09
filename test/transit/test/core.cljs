@@ -98,6 +98,7 @@
           uuid1 (t/read r "{\"~#'\":\"~u2f9e540c-0591-eff5-4e77-267b2cb3951f\"}")
           m1    {uuid0 :bar}]
       (is (t/uuid? uuid0))
+      (is (uuid? uuid0))
       (is (= uuid0 uuid1))
       (is (= (get m1 uuid0) :bar)))
     (let [l0 (t/read r "{\"~#'\":\"~i9007199254740993\"}")
