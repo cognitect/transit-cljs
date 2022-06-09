@@ -1,0 +1,4 @@
+{:deps {org.clojure/clojurescript {:mvn/version "1.10.238"}
+        com.cognitect/transit-js {:mvn/version "0.8.874"}}
+ :aliases {:repl {:extra-paths ["test"]
+                  :main-opts ["-m" "cljs.main" "-re" "node" "-r"]}}}
