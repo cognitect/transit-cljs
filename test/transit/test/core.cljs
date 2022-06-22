@@ -230,6 +230,12 @@
       (is (= "{\"~#sorted-set\":[1,2,3,4]}"
              (t/write w (sorted-set 3 4 1 2)))))))
 
+(deftest test-tcljs-50
+  (testing "sorted maps cannot be written"
+    (let [w (t/writer :json)
+          r  (t/reader :json)]
+      (is (= {:a 1} (t/read r (t/write w (sorted-map :a 1))))))))
+
 (defn -main [& args]
   (run-tests))
 
