@@ -257,6 +257,8 @@
               cljs.core/PersistentVector      vector-handler
               cljs.core/Subvec                vector-handler
               cljs.core/UUID                  uuid-handler
+              cljs.core/BlackNode             vector-handler
+              cljs.core/RedNode               vector-handler
               WithMeta                        meta-handler}
              (when (exists? cljs.core/Eduction)
                {^:cljs.analyzer/no-resolve cljs.core/Eduction list-handler})
