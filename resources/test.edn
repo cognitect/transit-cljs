@@ -1,0 +1,8 @@
+{:optimizations :advanced
+ :main transit.test-runner
+ :output-to "target/transit_test.js"
+ :output-dir "target"
+ :output-wrapper true
+ :verbose true
+ :compiler-stats true
+ :parallel-build true}
