@@ -77,8 +77,8 @@ Abbreviations:
 |decimal|Number|Number|
 |keyword|cc.Keyword|cc.Keyword|
 |symbol|cc.Symbol|cc.Symbol|
-|big integer|t.tagged|t.tagged|
-|big decimal|t.tagged|t.tagged|
+|big integer|cct.TaggedValue|cct.TaggedValue|
+|big decimal|cct.TaggedValue|cct.TaggedValue|
 |time|Date|Date|
 |uri|cct.URI|cct.URI|
 |uuid|cct.UUID|cct.UUID|
