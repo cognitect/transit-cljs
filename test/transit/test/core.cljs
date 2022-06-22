@@ -222,6 +222,14 @@
              {:default (fn [tag value] (t/tagged-value tag value))}})]
     (is (t/tagged-value? (first (t/read r "[\"~q1\"]"))))))
 
+(deftest test-tcljs-58
+  (testing "write handlers can take values for config"
+    (let [sorted-set-write-handler (t/write-handler "sorted-set" (fn [o] (vec o)))
+          w (t/writer :json-verbose
+              {:handlers {cljs.core/PersistentTreeSet sorted-set-write-handler}})]
+      (is (= "{\"~#sorted-set\":[1,2,3,4]}"
+             (t/write w (sorted-set 3 4 1 2)))))))
+
 (defn -main [& args]
   (run-tests))
 
