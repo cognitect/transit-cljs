@@ -300,6 +300,10 @@
   [from-rep]
   from-rep)
 
+(defn- fn-or-val
+  [f]
+  (if (fn? f) f (constantly f)))
+
 (defn write-handler
   "Creates a transit write handler whose tag, rep,
    stringRep, and verboseWriteHandler methods
@@ -309,12 +313,16 @@
   ([tag-fn rep-fn str-rep-fn]
      (write-handler tag-fn rep-fn str-rep-fn nil))
   ([tag-fn rep-fn str-rep-fn verbose-handler-fn]
+   (let [tag-fn (fn-or-val tag-fn)
+         rep-fn (fn-or-val rep-fn)
+         str-rep-fn (fn-or-val str-rep-fn)
+         verbose-handler-fn (fn-or-val verbose-handler-fn)]
      (reify
        Object
        (tag [_ o] (tag-fn o))
        (rep [_ o] (rep-fn o))
        (stringRep [_ o] (when str-rep-fn (str-rep-fn o)))
-       (getVerboseHandler [_] (when verbose-handler-fn (verbose-handler-fn))))))
+       (getVerboseHandler [_] (when verbose-handler-fn (verbose-handler-fn)))))))
 
 ;; =============================================================================
 ;; Constructors & Predicates
