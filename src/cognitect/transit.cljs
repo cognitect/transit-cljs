@@ -115,21 +115,23 @@
      (t/reader (name type)
        (opts-merge
          #js {:handlers
-              (clj->js
-                (merge
-                  {"$"    (fn [v] (symbol v))
-                   ":"    (fn [v] (keyword v))
-                   "set"  (fn [v] (into #{} v))
-                   "list" (fn [v] (into () (.reverse v)))
-                   "cmap" (fn [v]
-                            (loop [i 0 ret (transient {})]
-                              (if (< i (alength v))
-                                (recur (+ i 2)
-                                  (assoc! ret (aget v i) (aget v (inc i))))
-                                (persistent! ret))))
-                   "with-meta"
-                          (fn [v] (with-meta (aget v 0) (aget v 1)))}
-                  (dissoc (:handlers opts) :default)))
+              (reduce-kv
+                (fn [m tag handler]
+                  (gobj/set m (clj->js tag) #(handler %))
+                  m)
+                #js {"$"    (fn [v] (symbol v))
+                     ":"    (fn [v] (keyword v))
+                     "set"  (fn [v] (into #{} v))
+                     "list" (fn [v] (into () (.reverse v)))
+                     "cmap" (fn [v]
+                              (loop [i 0 ret (transient {})]
+                                (if (< i (alength v))
+                                  (recur (+ i 2)
+                                    (assoc! ret (aget v i) (aget v (inc i))))
+                                  (persistent! ret))))
+                     "with-meta"
+                            (fn [v] (with-meta (aget v 0) (aget v 1)))}
+                (dissoc (:handlers opts) :default))
               :defaultHandler (-> opts :handlers :default)
               :mapBuilder (MapBuilder.)
               :arrayBuilder (VectorBuilder.)

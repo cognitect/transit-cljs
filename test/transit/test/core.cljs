@@ -131,6 +131,36 @@
   (is (= (t/read cr "[\"~:foo\", 1]")
          [:foo 1])))
 
+(deftest test-read-custom-arities
+  (is (= (t/read (t/reader :json
+                   {:handlers
+                    {"custom" (fn [x]
+                                x)}})
+           "[\"~#custom\",\"abc\"]")
+        "abc"))
+  (is (= (t/read (t/reader :json 
+                   {:handlers
+                    {"custom" (fn
+                                ([] nil)
+                                ([x] x))}})
+           "[\"~#custom\",\"abc\"]")
+        "abc"))
+  (is (= (t/read (t/reader :json 
+                   {:handlers
+                    {"custom" (fn
+                                ([x] x)
+                                ([x y] [x y]))}})
+           "[\"~#custom\",\"abc\"]")
+        "abc"))
+  (is (= (t/read (t/reader :json 
+                   {:handlers
+                    {"custom" (fn
+                                ([] nil)
+                                ([x] x)
+                                ([x y] [x y]))}})
+           "[\"~#custom\",\"abc\"]")
+        "abc")))
+
 (def cw
   (t/writer :json
     {:handlers
